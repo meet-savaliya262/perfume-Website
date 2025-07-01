@@ -184,14 +184,14 @@
 
     <div id="login-form" class="form-section active">
       <h4 class="text-center mb-4">Log In to Your Account</h4>
-      <form>
+      <form action="login_process.php" method="post">
         <div class="form-group">
           <i class="fa fa-envelope"></i>
-          <input type="email" class="form-control" placeholder="Email" required>
+          <input type="email" class="form-control" name="login_email" placeholder="Email" required>
         </div>
         <div class="form-group">
           <i class="fa fa-lock"></i>
-          <input type="password" class="form-control" placeholder="Password" required>
+          <input type="password" class="form-control" name="login_password" placeholder="Password" required>
         </div>
         <button type="submit" class="btn btn-primary">Log In</button>
       </form>
@@ -199,7 +199,7 @@
 
     <div id="signup-form" class="form-section">
       <h4 class="text-center mb-4">Create a New Account</h4>
-      <form action="login-register_process.php" method="post">
+      <form action="signup_process.php" method="post">
         <div class="form-group">
           <i class="fa fa-user"></i>
           <input type="text" class="form-control" name="fnm" placeholder="Full Name" required>
