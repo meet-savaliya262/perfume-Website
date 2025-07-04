@@ -267,7 +267,7 @@
                </h2>
             </div>
             <div class="row">
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                   <div class="box">
                      <div class="img-box">
                         <img src="images/p1.png" alt="">
@@ -282,7 +282,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                   <div class="box">                    
                      <div class="img-box">
                         <img src="images/p2.png" alt="">
@@ -297,7 +297,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                   <div class="box">
                      <div class="img-box">
                         <img src="images/p3.png" alt="">
@@ -312,7 +312,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                   <div class="box">
                      <div class="img-box">
                         <img src="images/p4.png" alt="">
@@ -352,12 +352,12 @@
                   else 
                   {
                      while ($row = mysqli_fetch_assoc($res)) {
-                        echo '<div class="col-sm-6 col-md-4 col-xl-3 mb-4">';
+                        echo '<div class="col-6 col-sm-6 col-md-4 col-xl-3 mb-4">';
                         echo '<div class="box text-center">';
                         echo '<div class="img-box">';
                         echo '<a href="product-single.php?pid='.$row['p_id'].'"><img src="products_image/'.$row['p_img'].'"></a>';
                         echo '</div>';
-                        echo '<h5>'.$row['p_nm'].'</h5>';
+                        echo '<h5 class="pronm">'.$row['p_nm'].'</h5>';
                         echo '<h6>$'.$row['p_price'].'</h6>';
                         echo '</div>';
                         echo '</div>';
