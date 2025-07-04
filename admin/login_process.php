@@ -15,6 +15,7 @@
         {
             foreach($error as $er)
             {
+                header("location:login.php");
                 echo $er.'<br />';
             }
         }
