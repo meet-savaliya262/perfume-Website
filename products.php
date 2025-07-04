@@ -55,7 +55,7 @@ include("include_files/header.php");
         else 
         {
           while ($row = mysqli_fetch_assoc($res)) {
-            echo '<div class="col-6 col-sm-6 col-md-4 col-xl-3 mb-4">';
+            echo '<div class="col-sm-6 col-md-4 col-xl-3 mb-4">';
             echo '<div class="box text-center">';
             echo '<div class="img-box">';
             echo '<a href="product-single.php?pid='.$row['p_id'].'"><img src="products_image/'.$row['p_img'].'"></a>';
@@ -82,11 +82,11 @@ include("include_files/header.php");
           if(isset($_GET['cid']))
           {
             echo '<a href="products.php?cid='.$_GET['cid'].'
-                  &page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
+                  &page='.($cur_page - 1).'"><-</a>';
           }
           else
           {
-            echo '<a href="products.php?page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
+            echo '<a href="products.php?page='.($cur_page - 1).'"><-</a>';
           }
         }
       ?>
@@ -114,11 +114,11 @@ include("include_files/header.php");
           if(isset($_GET['cid']))
           {
             echo '<a href="products.php?cid='.$_GET['cid'].'
-                  &page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
+                  &page='.($cur_page + 1).'">-></a>';
           }
           else
           {
-            echo '<a href="products.php?page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
+            echo '<a href="products.php?page='.($cur_page + 1).'">-></a>';
           }
         }
       ?>

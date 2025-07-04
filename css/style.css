@@ -425,18 +425,6 @@ a:focus {
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
-/* products section mobil screen */
-@media (max-width: 576px) {
-  .product_section .box .img-box img {
-    max-height: 180px;
-    object-fit: cover;
-  }
-
-  .product_section .box {
-    padding: 10px;
-  }
-}
-
 .arrival_section {
     background-color: #d4ced0;
 }
@@ -1001,11 +989,11 @@ footer {
 .information_f p {
     margin-bottom: 1.2rem;
     line-height: 25px;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .widget_menu h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.2px;
@@ -1021,8 +1009,6 @@ footer {
 .widget_menu ul li {
     float: left;
     width: 100%;
-    font-size: 18px;
-    
 }
 
 .widget_menu ul li a {
@@ -1514,7 +1500,7 @@ justify-content: center;
 /* search  */
 .search-box-container {
     display: none;
-    background-color: transparent;
+    background-color: #f8f8f8;
     padding: 15px 0;
     border-top: 1px solid #ccc;
   }
@@ -1528,34 +1514,26 @@ justify-content: center;
   {
     width:80px;
     margin-top: -5rem;
-    margin-left: 17rem;
+    margin-left: 16rem;
   }
 }
 
 
 /* pagination of products page */
-.pageination {
+.pageination
+{
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
 }
-
-.pageination a {
-  padding: 6px 12px;
-  text-decoration: none;
-  background-color: #eee;
-  color: #333;
-  font-weight: 600;
-  border-radius: 4px;
-  font-size: 16px;
+.pageination a
+{
+  width: 30px;
+  height:30px;
+  margin-right: 15px;
+  background: lightgray;
+  text-align: center;
+  align-content: center;
+  color:blue;
 }
-@media (min-width: 992px) {
-   .pageination{
-    justify-content: center; /* desktop પર પણ center */
-  }
-}
-
 
 http://kute-themes.com/html/boutique/html/index.html
 https://template.hasthemes.com/noraure/noraure/index.html
