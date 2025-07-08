@@ -2,41 +2,10 @@
     include("include_files/header.php");
 ?>
 
-
-
          <!-- slider section -->
          <section class="slider_section ">
             <div class="slider_bg_box">
-               <img src="images/slider-bg.jpg" alt="">
-            </div>
-            <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-               <div class="carousel-inner">
-                  <div class="carousel-item active">
-                     <div class="container ">
-                        <div class="row">
-                           <div class="col-md-7 col-lg-6 ">
-                              <div class="detail-box">
-                                 <h1>
-                                    <span>
-                                    Sale 20% Off
-                                    </span>
-                                    <br>
-                                    On Everything
-                                 </h1>
-                                 <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
-                                 </p>
-                                 <div class="btn-box">
-                                    <a href="" class="btn1">
-                                    Shop Now
-                                    </a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+               <img src="images/slider-bg.png" alt="" class="full_img">
             </div>
          </section>
          <!-- end slider section -->
@@ -267,63 +236,40 @@
                </h2>
             </div>
             <div class="row">
-               <div class="col-sm-6 col-md-4 col-lg-3">
-                  <div class="box">
-                     <div class="img-box">
-                        <img src="images/p1.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                           Men's Shirt
-                        </h5>
-                        <h6>
-                           $75
-                        </h6>
+               <div class="col-6 col-md-4 col-lg-3 mb-4">
+                  <div class="product-card">
+                     <img src="images/p1.png" class="image-wrapper">
+                     <div class="product-info text-center">
+                        <h5>Men's shirt</h5>
+                        <p class="price">₹500</p>
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
-                  <div class="box">                    
-                     <div class="img-box">
-                        <img src="images/p2.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                           Men's Shirt
-                        </h5>
-                        <h6>
-                           $80
-                        </h6>
+
+               <div class="col-6 col-md-4 col-lg-3 mb-4">
+                  <div class="product-card">
+                     <img src="images/p2.png" class="image-wrapper">
+                     <div class="product-info text-center">
+                        <h5>Men's shirt</h5>
+                        <p class="price">₹500</p>
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
-                  <div class="box">
-                     <div class="img-box">
-                        <img src="images/p3.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                           Women's Dress
-                        </h5>
-                        <h6>
-                           $68
-                        </h6>
+               <div class="col-6 col-md-4 col-lg-3 mb-4">
+                  <div class="product-card">
+                     <img src="images/p3.png" class="image-wrapper">
+                     <div class="product-info text-center">
+                        <h5>Men's shirt</h5>
+                        <p class="price">₹500</p>
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
-                  <div class="box">
-                     <div class="img-box">
-                        <img src="images/p4.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                           Women's Dress
-                        </h5>
-                        <h6>
-                           $70
-                        </h6>
+               <div class="col-6 col-md-4 col-lg-3 mb-4">
+                  <div class="product-card">
+                     <img src="images/p4.png" class="image-wrapper">
+                     <div class="product-info text-center">
+                        <h5>Men's shirt</h5>
+                        <p class="price">₹500</p>
                      </div>
                   </div>
                </div>
@@ -333,46 +279,134 @@
       <!-- end latest products -->
       
       <!-- our product section -->
-      <section class="product_section layout_padding">
-         <div class="container">
-            <div class="heading_container heading_center">
-               <h2>
-                 Latest <span>products</span>
-               </h2>
-            </div>
-            <div class="row">
-               <?php
-                  $q="select * from products where p_status=1";
-                  $res = mysqli_query($link, $q);
+    <section class="product_section layout_padding">
+  <div class="container">
 
-                  if (mysqli_num_rows($res) <= 0) 
-                  {
-                     echo "<div class='col-12 text-center'><p>No products found.</p></div>";
-                  } 
-                  else 
-                  {
-                     while ($row = mysqli_fetch_assoc($res)) {
-                        echo '<div class="col-sm-6 col-md-4 col-xl-3 mb-4">';
-                        echo '<div class="box text-center">';
-                        echo '<div class="img-box">';
-                        echo '<a href="product-single.php?pid='.$row['p_id'].'"><img src="products_image/'.$row['p_img'].'"></a>';
-                        echo '</div>';
-                        echo '<h5>'.$row['p_nm'].'</h5>';
-                        echo '<h6>$'.$row['p_price'].'</h6>';
-                        echo '</div>';
-                        echo '</div>';
-                     }
-                  }
-               ?>
-            </div>
-            <div class="btn-box">
-               <a href="products.php">
-               View All products
-               </a>
-            </div>
-         </div>
-      </section>
-      <!-- end our product section -->
+    <!-- Page Heading -->
+    <div class="heading_container heading_center mb-4">
+      <h2>Our <span>Products</span></h2>
+    </div>
+  
+
+    <div class="row">
+      <?php
+        if(isset($_GET['cid']))
+        {
+          $catid=$_GET['cid'];
+          $t_q="select count(*) as total from products where p_cat=".$catid." and p_status=1";
+          $t_res=mysqli_query($link,$t_q);
+          $t_row=mysqli_fetch_assoc($t_res);
+          $total_item=$t_row['total'];
+        }
+        else
+        {
+          $t_q="select count(*) as total from products where p_status=1";
+          $t_res=mysqli_query($link,$t_q);
+          $t_row=mysqli_fetch_assoc($t_res);
+          $total_item=$t_row['total'];
+        }
+        
+        $cur_page= (isset($_GET['page'])? $_GET['page'] : 1) ;
+        $page_per_item= 8;
+        $total_page = ceil($total_item/$page_per_item);
+        $start_pos = ($cur_page - 1) * $page_per_item;
+
+        if(isset($_GET['cid']))
+        {
+          $catid=$_GET['cid'];
+          $q = "SELECT * FROM products where p_cat=".$catid." AND p_status=1
+                LIMIT ".$start_pos.",".$page_per_item;
+        }
+        else
+        {
+          $q = "SELECT * FROM products where p_status=1  
+                LIMIT ".$start_pos.",".$page_per_item;
+        }
+        $res = mysqli_query($link, $q);
+
+        if (mysqli_num_rows($res) <= 0) 
+        {
+          echo "<div class='col-12 text-center'><p>No products found.</p></div>";
+        } 
+        else 
+        {
+          while ($row = mysqli_fetch_assoc($res)) {
+            echo '<div class="col-6 col-sm-6 col-md-4 col-xl-3 mb-4">';
+            echo '<div class="product-card">';
+            echo '<a href="product-single.php?pid='.$row['p_id'].'" class="image-wrapper">
+                     <img src="products_image/'.$row['p_img'].'">
+                  </a>';
+            echo '<div class="product-info text-center">';
+            echo '<h5>'.$row['p_nm'].'</h5>';
+            echo '<h6 class="price">$'.$row['p_price'].'</h6>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+          }
+        }
+      ?>
+
+    </div>
+  </div>
+</section>
+<!-- end our product section -->
+
+<!-- pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="pageination">
+
+      <?php 
+        if($cur_page > 1)
+        {
+          if(isset($_GET['cid']))
+          {
+            echo '<a href="products.php?cid='.$_GET['cid'].'
+                  &page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
+          }
+          else
+          {
+            echo '<a href="products.php?page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
+          }
+        }
+      ?>
+
+      <?php
+
+        for($i=1;$i<=$total_page;$i++)
+        {
+          if(isset($_GET['cid']))
+          {
+              echo '<a href="products.php?cid='.$_GET['cid'].'&page='.$i.'">'.$i.'</a>';
+          }
+          else
+          {
+            echo '<a href="products.php?page='.$i.'">'.$i.'</a>';
+          }
+        }
+
+      ?>
+              
+
+      <?php 
+        if($cur_page < $total_page)
+        {
+          if(isset($_GET['cid']))
+          {
+            echo '<a href="products.php?cid='.$_GET['cid'].'
+                  &page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
+          }
+          else
+          {
+            echo '<a href="products.php?page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
+          }
+        }
+      ?>
+      </div>
+    </div>
+  </div>
+</div>
 
       
 <?php 

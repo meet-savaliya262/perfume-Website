@@ -22,7 +22,6 @@
       <link rel="stylesheet" type="text/css" href="css/bootstrap.css " />
       <!-- font awesome style -->
       <link rel="stylesheet" href="fontawesome/css/all.min.css">
-
       <!-- Custom styles for this template -->
       <link href="css/style.css" rel="stylesheet" />
       <!-- responsive style -->
@@ -35,7 +34,9 @@
          <header class="header_section">
             <div class="container">
                <nav class="navbar navbar-expand-lg custom_nav-container ">
-                  <a class="navbar-brand" href="index.php"><img width="250" src="images/logo.png" alt="#" /></a>
+                  <a class="navbar-brand" href="index.php">
+                     <img height="90" src="images/logo.png" alt="#" />
+                  </a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class=""> </span>
                   </button>
@@ -101,9 +102,9 @@
                         </li>
 
                         <li class="nav-item">
-                           <a href="#" id="searchToggle" class="nav-link">
-                              <i class="fa-solid fa-magnifying-glass"></i>
-                           </a>
+                           <div class="search-icon" onclick="openSearch()">
+                              <i class="fas fa-search"></i>
+                           </div>
                         </li>
 
                          <li class="nav-item">
@@ -114,16 +115,30 @@
                      </ul>
                   </div>
                </nav>
+               <form action="search.php" method="get">
+                  <div class="search-overlay" id="searchOverlay">
+                     <div class="search-container">
+                        <select name="cat">
+                           <option>All category</option>
+                           
+                              <?php
+                                 $cq="select * from category where cat_status=1";
+                                 $cres=mysqli_query($link,$cq);
+                                 while($crow=mysqli_fetch_assoc($cres))
+                                 {
+                                    echo '<option value="'.$crow['cat_id'].'">'.$crow['cat_nm'].'</option>';
+                                 }
 
-               <div id="searchBox" class="search-box-container">
-                  <div class="container">
-                     <form class="form-inline mt-2">
-                        <input type="text" class="form-control mr-2 w-75" placeholder="Search products...">
-                        <button type="submit" class="btn btn-outline-primary sinput">Search</button>
-                     </form>
+                              ?>
+                          
+                        </select>
+                        <span class="arrow_carrot-down"></span>
+                        <input type="text" placeholder="Search products..." name="s"/>
+                        <button><i class="fas fa-search"></i></button>
+                        <span class="close-btn" onclick="closeSearch()">&times;</span>
+                     </div>
                   </div>
-               </div>
-               
+               </form>
 
             </div>
          </header>
@@ -131,15 +146,13 @@
          <!-- end header section -->
 
 <script>
-  document.getElementById("searchToggle").addEventListener("click", function (e) {
-    e.preventDefault();
-    var searchBox = document.getElementById("searchBox");
-    if (searchBox.style.display === "none" || searchBox.style.display === "") {
-      searchBox.style.display = "block";
-    } else {
-      searchBox.style.display = "none";
+ function openSearch() {
+      document.getElementById("searchOverlay").style.height = "100%";
     }
-  });
+
+    function closeSearch() {
+      document.getElementById("searchOverlay").style.height = "0";
+    }
 </script>
    </body>
 </html>

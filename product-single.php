@@ -38,9 +38,13 @@ else
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star-half-alt"></i>
+         <a class="nav-link wishlisticon" href="wishlist.php" style="position: relative;">
+          <i class="fa-solid fa-heart"></i>
+       </a>
       </div>
+       
 
-      <p><?php echo $row['p_description']; ?></p>
+      <p  style="font-weight:500;"><?php echo $row['p_description']; ?></p>
       <h4>Price:₹<?php echo $row['p_price']; ?></h4>
 
           
@@ -70,7 +74,7 @@ else
                       <button class="btn btn-secondary btn-plus"><b>+</b></button>
                     </div>';
               echo '<input type="hidden" name="pid" value="'.$p_id.'">';
-              echo '<button type="submit" class="btn btn-primary">Add to cart</button>
+              echo '<button type="submit" class="btn btn-primary xyz"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp;Add to cart</button>
                </form>';
             }
             else
@@ -85,8 +89,8 @@ else
 
       <!-- Extra Info -->
       <div class="product-meta">
-        <p><strong>Category:</strong>&nbsp;&nbsp;&nbsp;<?php echo $row['cat_nm']; ?></p>
-        <p><strong>Weight:</strong>&nbsp;&nbsp;&nbsp;<?php echo $row['p_weight']; ?></p>
+        <p  style="font-weight:500;"><strong>Category:</strong>&nbsp;&nbsp;&nbsp;<?php echo $row['cat_nm']; ?></p>
+        <p  style="font-weight:500;"><strong>Weight:</strong>&nbsp;&nbsp;&nbsp;<?php echo $row['p_weight']; ?></p>
         <p><strong>Share on:</strong>
             <div class="social-icons">
               <a href="#"><i class="fab fa-facebook-square"></i></a>

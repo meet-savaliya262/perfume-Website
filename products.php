@@ -2,6 +2,24 @@
 include("include_files/header.php");
 ?>
 
+<section class="inner_page_head">
+   <div class="container-fluid"> 
+      <div class="row">
+         <div class="col-md-12">
+            <div class="full">
+               <h3>Products</h3>
+                <nav aria-label="breadcrumb" class="text-center">
+                  <ol class="breadcrumb bg-transparent p-0 mt-2 justify-content-center">
+                      <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Products</li>
+                  </ol>
+                </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
 <!-- product section -->
 <section class="product_section layout_padding">
   <div class="container">
@@ -31,7 +49,7 @@ include("include_files/header.php");
         }
         
         $cur_page= (isset($_GET['page'])? $_GET['page'] : 1) ;
-        $page_per_item= 2;
+        $page_per_item= 4;
         $total_page = ceil($total_item/$page_per_item);
         $start_pos = ($cur_page - 1) * $page_per_item;
 
@@ -54,14 +72,16 @@ include("include_files/header.php");
         } 
         else 
         {
-          while ($row = mysqli_fetch_assoc($res)) {
-            echo '<div class="col-sm-6 col-md-4 col-xl-3 mb-4">';
-            echo '<div class="box text-center">';
-            echo '<div class="img-box">';
-            echo '<a href="product-single.php?pid='.$row['p_id'].'"><img src="products_image/'.$row['p_img'].'"></a>';
+           while ($row = mysqli_fetch_assoc($res)) {
+            echo '<div class="col-6 col-sm-6 col-md-4 col-xl-3 mb-4">';
+            echo '<div class="product-card">';
+            echo '<a href="product-single.php?pid='.$row['p_id'].'" class="image-wrapper">
+                     <img src="products_image/'.$row['p_img'].'">
+                  </a>';
+            echo '<div class="product-info text-center">';
+            echo '<h5 class="pro_name">'.$row['p_nm'].'</h5>';
+            echo '<h6 class="price">₹'.$row['p_price'].'</h6>';
             echo '</div>';
-            echo '<h5>'.$row['p_nm'].'</h5>';
-            echo '<h6>$'.$row['p_price'].'</h6>';
             echo '</div>';
             echo '</div>';
           }
@@ -82,11 +102,11 @@ include("include_files/header.php");
           if(isset($_GET['cid']))
           {
             echo '<a href="products.php?cid='.$_GET['cid'].'
-                  &page='.($cur_page - 1).'"><-</a>';
+                  &page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
           }
           else
           {
-            echo '<a href="products.php?page='.($cur_page - 1).'"><-</a>';
+            echo '<a href="products.php?page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
           }
         }
       ?>
@@ -114,11 +134,11 @@ include("include_files/header.php");
           if(isset($_GET['cid']))
           {
             echo '<a href="products.php?cid='.$_GET['cid'].'
-                  &page='.($cur_page + 1).'">-></a>';
+                  &page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
           }
           else
           {
-            echo '<a href="products.php?page='.($cur_page + 1).'">-></a>';
+            echo '<a href="products.php?page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
           }
         }
       ?>

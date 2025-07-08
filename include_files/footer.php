@@ -5,12 +5,14 @@
                <div class="col-md-5">
                    <div class="full">
                       <div class="logo_footer">
-                        <a href="#"><img width="210" src="images/logo.png" alt="#" /></a>
+                        <a href="#">
+                           <img height="100" src="images/logo.png" alt="#"/>
+                        </a>                    
                       </div>
                       <div class="information_f">
-                        <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
-                        <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
-                        <p><strong>EMAIL:</strong> yourmain@gmail.com</p>
+                        <p><strong>ADDRESS:</strong> shree hri sosayati-3,near rangila hanuman,mavdi chok,rajkot-360004</p>
+                        <p><strong>TELEPHONE:</strong> +91 9727480282</p>
+                        <p><strong>EMAIL:</strong> meetsavliya13@gmail.com</p>
                       </div>
                    </div>
                </div>
@@ -64,4 +66,4 @@
       <!-- custom js -->
       <script src="js/custom.js"></script>
    </body>
-</html>s
+</html>

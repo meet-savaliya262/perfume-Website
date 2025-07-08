@@ -4,7 +4,7 @@
 
 <!-- inner page section -->
 <section class="inner_page_head">
-   <div class="container-fluid"> <!-- ✅ typo fixed here -->
+   <div class="container-fluid"> 
       <div class="row">
          <div class="col-md-12">
             <div class="full">

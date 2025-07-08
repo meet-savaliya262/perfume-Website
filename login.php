@@ -10,7 +10,7 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #cfd8dc, #eceff1);
+      background:linear-gradient(to right,skyblue,white);
       height: 100vh;
       display: flex;
       align-items: center;
@@ -193,10 +193,23 @@
           <i class="fa fa-lock"></i>
           <input type="password" class="form-control" name="login_password" placeholder="Password" required>
         </div>
+        <?php
+            if(isset($_SESSION['error']['loginemail']) && isset($_SESSION['error']['loginpass']))
+            {
+                echo '<font color="red">'.$_SESSION['error']['loginemail'].'</font>';
+                echo '<font color="red">'.$_SESSION['error']['loginpass'].'</font>';
+            }
+
+        ?>
+      
         <button type="submit" class="btn btn-primary">Log In</button>
+        <br /><br />
+        <div class="form-group text-right">
+          <a href="forgot_password.php" class="text-muted">Forgot Password?</a>
+        </div>
       </form>
     </div>
-
+ 
     <div id="signup-form" class="form-section">
       <h4 class="text-center mb-4">Create a New Account</h4>
       <form action="signup_process.php" method="post">

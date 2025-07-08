@@ -35,6 +35,8 @@
             {
                 $error[]="enter minimum 6 digit password";
             }
+
+
             if(!empty($error))
             {
                 foreach($error as $er)
@@ -46,8 +48,8 @@
             {
                include("include_files/config.php");
                $t=time();
-               $q="insert into users(u_fnm,u_email,u_mno,u_pwd,u_time)values('".$fnm."','".$email."','".$mno."','".$pwd."','".$t."')";
-               mysqli_query($link,$q);
+               $rq="insert into users(u_fnm,u_email,u_mno,u_pwd,u_time)values('".$fnm."','".$email."','".$mno."','".$pwd."','".$t."')";
+               mysqli_query($link,$rq);
                header("location:login.php");
             }
         }      
