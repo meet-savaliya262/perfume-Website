@@ -117,42 +117,33 @@
                </nav>
                <form action="search.php" method="get">
                   <div class="search-overlay" id="searchOverlay">
+                     <span class="close-btn" onclick="closeSearch()">&times;</span>
                      <div class="search-container">
-                        <select name="cat">
-                           <option>All category</option>
-                           
-                              <?php
-                                 $cq="select * from category where cat_status=1";
-                                 $cres=mysqli_query($link,$cq);
-                                 while($crow=mysqli_fetch_assoc($cres))
-                                 {
-                                    echo '<option value="'.$crow['cat_id'].'">'.$crow['cat_nm'].'</option>';
-                                 }
-
-                              ?>
-                          
-                        </select>
-                        <span class="arrow_carrot-down"></span>
-                        <input type="text" placeholder="Search products..." name="s"/>
-                        <button><i class="fas fa-search"></i></button>
-                        <span class="close-btn" onclick="closeSearch()">&times;</span>
+                        <input type="text" name="s" placeholder="Search products..." />
+                        <button type="submit"><i class="fas fa-search"></i></button>
                      </div>
                   </div>
                </form>
-
             </div>
          </header>
 
          <!-- end header section -->
 
-<script>
- function openSearch() {
-      document.getElementById("searchOverlay").style.height = "100%";
-    }
 
-    function closeSearch() {
-      document.getElementById("searchOverlay").style.height = "0";
-    }
+ <script>
+ function openSearch() {
+  document.getElementById("searchOverlay").classList.add("active");
+  setTimeout(() => {
+    document.querySelector("#searchOverlay input").focus();
+  }, 300);
+}
+
+function closeSearch() {
+  document.getElementById("searchOverlay").classList.remove("active");
+}
+
+
 </script>
+
    </body>
 </html>

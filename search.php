@@ -33,7 +33,6 @@ include("include_files/header.php");
     <div class="row">
       <?php
 
-        $C=$_GET['cat'];
         $s=$_GET['s'];
         $q = "SELECT * FROM products where p_nm LIKE '%".$s."%' AND p_status=1";
         
