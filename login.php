@@ -181,34 +181,52 @@
       <button id="signupBtn" onclick="toggleForm('signup')">Sign Up</button>
     </div>
 
+    <!-- login -->
 
     <div id="login-form" class="form-section active">
       <h4 class="text-center mb-4">Log In to Your Account</h4>
       <form action="login_process.php" method="post">
+
+      
+
         <div class="form-group">
           <i class="fa fa-envelope"></i>
           <input type="email" class="form-control" name="login_email" placeholder="Email" required>
+          <?php
+            if(isset($_SESSION['error']['login_email']))
+            {
+                echo '<font color="red">'.$_SESSION['error']['login_email'].'</font>';
+            }
+          ?>
         </div>
+       
         <div class="form-group">
           <i class="fa fa-lock"></i>
           <input type="password" class="form-control" name="login_password" placeholder="Password" required>
-        </div>
-        <?php
-            if(isset($_SESSION['error']['loginemail']) && isset($_SESSION['error']['loginpass']))
+          <?php
+            if(isset($_SESSION['error']['login_password']))
             {
-                echo '<font color="red">'.$_SESSION['error']['loginemail'].'</font>';
-                echo '<font color="red">'.$_SESSION['error']['loginpass'].'</font>';
+                echo '<font color="red">'.$_SESSION['error']['login_password'].'</font>';
             }
+          ?>
+        </div>    
 
-        ?>
-      
         <button type="submit" class="btn btn-primary">Log In</button>
+        <?php
+            if(! empty($_SESSION['error']))
+            {
+                unset($_SESSION['error']);
+            }
+        ?>
+        
         <br /><br />
         <div class="form-group text-right">
           <a href="forgot_password.php" class="text-muted">Forgot Password?</a>
         </div>
       </form>
     </div>
+
+    <!-- signup -->
  
     <div id="signup-form" class="form-section">
       <h4 class="text-center mb-4">Create a New Account</h4>

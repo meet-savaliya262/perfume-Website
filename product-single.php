@@ -1,24 +1,34 @@
 <?php
-  
+ob_start();
 include("include_files/header.php");
-if(!empty($_GET['pid']))
+
+if (!empty($_GET['pid'])) 
 {
-    $pid = $_GET['pid'];
-    $q = "SELECT * FROM products,category
-          WHERE p_cat=cat_id AND p_id =".$pid." AND p_status = 1";
+    $pid = mysqli_real_escape_string($link, $_GET['pid']);
+
+    $q = "SELECT * FROM products, category
+          WHERE p_cat = cat_id AND p_id = '$pid'
+          AND p_status = 1";
 
     $res = mysqli_query($link, $q);
 
-    $row = mysqli_fetch_assoc($res);
-    extract($row);
+    if ($res && mysqli_num_rows($res) > 0) 
+    {
+        $row = mysqli_fetch_assoc($res);
+        extract($row);
+    } 
+    else 
+    {
+        header("Location: products.php");
+    }
 } 
 else 
 {
-   
-    header("location:products.php");
-    exit;
+    header("Location: products.php");
 }
+ob_end_flush();
 ?>
+
       
 <div class="container mt-5">
   <div class="row">

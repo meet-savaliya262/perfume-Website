@@ -40,7 +40,7 @@ include("include_files/header.php");
 
         if (mysqli_num_rows($res) <= 0) 
         {
-          echo "<div class='col-12 text-center'><p>No products found.</p></div>";
+          echo "<div class='col-12 text-center'><p><h3>No products found...</h3></p></div>";
         } 
         else 
         {

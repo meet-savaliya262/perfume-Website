@@ -22,17 +22,17 @@
 </section>
 <!-- end inner page section -->
 
-      <!-- why section -->
+      <!-- contact section -->
       <section class="why_section layout_padding">
          <div class="container">
          
             <div class="row">
                <div class="col-lg-8 offset-lg-2">
-                  <div class="full">
+                  <div class="full contactpg">
                      <form action="contact_process.php" method="post">
                         <fieldset>
                            <label>Full Name:</label><input type="text" placeholder="Enter your full name" name="fnm">
-                           <label>Email:</label><input type="email" placeholder="Enter your email address" name="email">
+                           <label>Email:</label><input type="email" placeholder="Enter your email address" name="email" style="text-transform: lowercase;">
                            <label>Message:</label><textarea name="msg" placeholder="enter message"></textarea>
                            <input type="submit" value="Submit" />
                         </fieldset>
@@ -42,7 +42,7 @@
             </div>
          </div>
       </section>
-      <!-- end why section -->
+      <!-- end contact section -->
 
 <?php
     include("include_files/footer.php");

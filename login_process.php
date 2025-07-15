@@ -2,21 +2,18 @@
     if(!empty($_POST))
     {
         extract($_POST);
-        $error=array();
+        $_SESSION['error']=array();
         if(empty($login_email))
         {
-            $error[]="please enter email";
+            $_SESSION['error']['login_email']="please enter email";
         }
         if(empty($login_password))
         {
-            $error[]="please enter password";
+            $_SESSION['error']['login_password']="please enter password";
         }
-        if(!empty($error))
+        if(! empty($_SESSION['error']))
         {
-            foreach($error as $er)
-            {
-                echo $er.'<br />';
-            }
+            header("location:login.php");
         }
         else
         {
@@ -26,14 +23,14 @@
             $row=mysqli_fetch_assoc($res);
             if(empty($row))
             {
-                echo "wrong email or pass";
+                header("location:login.php");
             }
             else
             {
                 $_SESSION['client']['email']=$row['u_email'];
                 $_SESSION['client']['id']=$row['u_id'];
                 $_SESSION['client']['status']=true;
-                 header("location:index.php");
+                header("location:index.php");
             }
         }
     }

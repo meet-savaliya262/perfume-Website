@@ -29,6 +29,7 @@
                $q="insert into contact(co_fnm,co_email,co_msg,co_time)values('".$fnm."','".$email."','".$msg."','".$t."')";
                mysqli_query($link,$q);
                echo "Done! massage sent succesfullys";
+               header("location:contact.php");
             }
         }      
         else

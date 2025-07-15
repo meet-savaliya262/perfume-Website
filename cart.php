@@ -80,7 +80,7 @@
 
   <div class="shoping_cart_btns d-flex justify-content-between flex-wrap">
     <a href="#" class="btn btn-outline-secondary">Continue Shopping</a>
-    <button type="submit" class="btn btn-primary">Update Cart</button>
+    <button type="submit" class="btn btn-primary ubtn"><i class="fa-solid fa-spinner"></i>&nbsp;&nbsp;Update Cart</button>
   </div>
   </form>
 
@@ -94,7 +94,7 @@
         <hr>
         <p><strong>Subtotal:</strong>₹<?php echo $total; ?></p>
         <p><strong>Total:</strong> ₹<?php echo $total; ?></p>
-        <a href="#" class="btn btn-primary btn-block">Proceed to Checkout</a>
+        <a href="checkout.php" class="btn btn-primary btn-block checkbtn">Proceed to Checkout</a>
       </div>
     </div>
   </div>

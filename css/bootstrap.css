@@ -4222,7 +4222,8 @@ input[type="button"].btn-block {
 
 .navbar-toggler {
   padding: 0.25rem 0.75rem;
-  font-size: 1.25rem;
+  font-size: 1.8rem;
+  margin-left: 10px;
   line-height: 1;
   background-color: transparent;
   border: 1px solid transparent;
@@ -4483,7 +4484,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-light .navbar-toggler {
-  color: rgba(0, 0, 0, 0.5);
+  color:#000;
   border-color: rgba(0, 0, 0, 0.1);
 }
 

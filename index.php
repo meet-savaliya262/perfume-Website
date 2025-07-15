@@ -2,13 +2,40 @@
     include("include_files/header.php");
 ?>
 
-         <!-- slider section -->
-         <section class="slider_section ">
-            <div class="slider_bg_box">
-               <img src="images/slider-bg.png" alt="" class="full_img">
-            </div>
-         </section>
-         <!-- end slider section -->
+ <!-- slider section -->
+   <div id="heroCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#heroCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#heroCarousel" data-slide-to="1"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <a href="products.php">
+       <img src="images/hero-1.png" class="d-block w-100 carousel-img" alt="...">
+      </a>
+    </div>
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <a href="products.php">
+         <img src="images/hero-2.jpg" class="d-block w-100 carousel-img" alt="...">
+      </a>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<!-- end slider section -->
       <!-- why section -->
       <section class="why_section layout_padding">
          <div class="container">
@@ -201,30 +228,10 @@
       <!-- end why section -->
       
       <!-- arrival section -->
-      <section class="arrival_section">
-         <div class="container">
-            <div class="box">
-               <div class="arrival_bg_box">
-                  <img src="images/arrival-bg.png" alt="">
-               </div>
-               <div class="row">
-                  <div class="col-md-6 ml-auto">
-                     <div class="heading_container remove_line_bt">
-                        <h2>
-                           #NewArrivals
-                        </h2>
-                     </div>
-                     <p style="margin-top: 20px;margin-bottom: 30px;">
-                        Vitae fugiat laboriosam officia perferendis provident aliquid voluptatibus dolorem, fugit ullam sit earum id eaque nisi hic? Tenetur commodi, nisi rem vel, ea eaque ab ipsa, autem similique ex unde!
-                     </p>
-                     <a href="">
-                     Shop Now
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
+      <div class="image-container">
+         <img src="images/new1.png" alt="Image 1" />
+         <img src="images/new2.png" alt="Image 2" />
+      </div>
       <!-- end arrival section -->
 
       <!-- latest products -->
@@ -354,7 +361,7 @@
 <!-- pagination -->
 <div class="container">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       <div class="pageination">
 
       <?php 
@@ -378,11 +385,11 @@
         {
           if(isset($_GET['cid']))
           {
-              echo '<a href="products.php?cid='.$_GET['cid'].'&page='.$i.'">'.$i.'</a>';
+              echo '<a href="index.php?cid='.$_GET['cid'].'&page='.$i.'">'.$i.'</a>';
           }
           else
           {
-            echo '<a href="products.php?page='.$i.'">'.$i.'</a>';
+            echo '<a href="index.php?page='.$i.'">'.$i.'</a>';
           }
         }
 
