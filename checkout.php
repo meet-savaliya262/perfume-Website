@@ -74,7 +74,7 @@
                   echo '<font color="red">'.$_SESSION['error']['address_line1'].'</font>';
               }
             ?>
-            <input type="text" class="form-control" placeholder="Apartment, suite, unit etc (optional)" name="addresss_line2">
+            <input type="text" class="form-control" placeholder="Apartment, suite, unit etc (optional)" name="address_line2">
           </div>
 
           <div class="form-group">
@@ -101,7 +101,7 @@
 
           <div class="form-group">
             <label>Pincode*</label>
-            <input type="text" class="form-control" name="">
+            <input type="text" class="form-control" name="pincode">
           </div>
 
           <div class="form-row">
@@ -171,9 +171,16 @@
         </p>
 
         <div class="form-check mb-3">
-          <input type="checkbox" class="form-check-input codcheckbox" id="cod" name="payment">
+          <input type="checkbox" class="form-check-input codcheckbox" id="cod" name="payment" value="cash on delivery">
           <label class="form-check-label" for="cod">Cash on Delivery</label>
         </div>
+        <?php
+          if(isset($_SESSION['error']['payment']))
+          {
+              echo '<font color="red">'.$_SESSION['error']['payment'].'</font>';
+          }
+        ?>
+
         <button class="btn btn-order btn-block">Place Order</button>
 
         <?php

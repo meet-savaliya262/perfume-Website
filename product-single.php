@@ -48,9 +48,11 @@ ob_end_flush();
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star-half-alt"></i>
-         <a class="nav-link wishlisticon" href="wishlist.php" style="position: relative;">
-          <i class="fa-solid fa-heart"></i>
-       </a>
+        
+      <a class="nav-link wishlisticon" href="add_to_wishlist.php?pid=<?php echo $row['p_id']; ?>" style="position: relative;">
+        <i class="fa-solid fa-heart"></i>
+      </a>
+
       </div>
        
 
@@ -79,9 +81,9 @@ ob_end_flush();
             {
               echo '<form action="addtocart.php" method="post">
                     <div class="quantity-box">
-                      <button class="btn btn-secondary btn-minus"><b>-</b></button>
+                      <button class="btn btn-secondary btn-minus" type="button"><b>-</b></button>
                       <input type="text" name="qty" class="form-control qty-input" value="1">
-                      <button class="btn btn-secondary btn-plus"><b>+</b></button>
+                      <button class="btn btn-secondary btn-plus" type="button"><b>+</b></button>
                     </div>';
               echo '<input type="hidden" name="pid" value="'.$p_id.'">';
               echo '<button type="submit" class="btn btn-primary xyz"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp;Add to cart</button>
@@ -118,6 +120,29 @@ ob_end_flush();
 
 <!-- JS Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // Plus Button Click
+    $('.btn-plus').click(function() {
+      var $input = $(this).siblings('.qty-input');
+      var val = parseInt($input.val());
+      if (!isNaN(val)) {
+        $input.val(val + 1);
+      }
+    });
+
+    // Minus Button Click
+    $('.btn-minus').click(function() {
+      var $input = $(this).siblings('.qty-input');
+      var val = parseInt($input.val());
+      if (!isNaN(val) && val > 1) {
+        $input.val(val - 1);
+      }
+    });
+  });
+</script>
+
 
 <br /><br />
 

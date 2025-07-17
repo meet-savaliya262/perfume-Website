@@ -79,7 +79,7 @@
   </div>
 
   <div class="shoping_cart_btns d-flex justify-content-between flex-wrap">
-    <a href="#" class="btn btn-outline-secondary">Continue Shopping</a>
+    <a href="products.php" class="btn btn-outline-secondary">Continue Shopping</a>
     <button type="submit" class="btn btn-primary ubtn"><i class="fa-solid fa-spinner"></i>&nbsp;&nbsp;Update Cart</button>
   </div>
   </form>

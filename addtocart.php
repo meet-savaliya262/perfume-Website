@@ -11,7 +11,7 @@ session_start();
         $q="select p_nm,p_price,p_img from products where p_id=".$id;
         $res=mysqli_query($link,$q);
         $row=mysqli_fetch_assoc($res);
-        $_SESSION['cart'][]=array('qty'=>$qty,'nm'=>$row['p_nm'],'price'=>$row['p_price'],'img'=>$row['p_img']);
+        $_SESSION['cart'][]=array('id'=>$id,'qty'=>$qty,'nm'=>$row['p_nm'],'price'=>$row['p_price'],'img'=>$row['p_img']);
         header("location:product-single.php?pid=".$id);
     }
 
