@@ -47,7 +47,7 @@
             else
             {
                include("include_files/config.php");
-               $t=time();
+               $t = date("Y-m-d H:i:s"); 
                $rq="insert into users(u_fnm,u_email,u_mno,u_pwd,u_time)values('".$fnm."','".$email."','".$mno."','".$pwd."','".$t."')";
                mysqli_query($link,$rq);
                header("location:login.php");

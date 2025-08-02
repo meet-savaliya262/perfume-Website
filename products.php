@@ -93,7 +93,7 @@ include("include_files/header.php");
             }
             
             $cur_page= (isset($_GET['page'])? $_GET['page'] : 1) ;
-            $page_per_item=4;
+            $page_per_item=6;
             $total_page = ceil($total_item/$page_per_item);
             $start_pos = ($cur_page - 1) * $page_per_item;
 
@@ -124,7 +124,7 @@ include("include_files/header.php");
                       </a>';
                 echo '<div class="product-info text-center">';
                 echo '<h5>'.$row['p_nm'].'</h5>';
-                echo '<h6 class="price">$'.$row['p_price'].'</h6>';
+                echo '<h6 class="price">₹'.$row['p_price'].'</h6>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';

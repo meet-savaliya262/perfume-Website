@@ -1,4 +1,8 @@
-<?php session_start();
+<?php  
+      if (session_status() === PHP_SESSION_NONE) {
+         session_start();
+      }
+
 
       $page=basename($_SERVER['SCRIPT_FILENAME']);
       include("include_files/config.php");
@@ -136,18 +140,29 @@
             </div>
 
             <!-- User Icon / Logout -->
-            <?php
-               if (isset($_SESSION['client']['status']) && $_SESSION['client']['status'] === true) {
-                  echo '<div class="nav-link position-relative">
-                        <i class="fa-solid fa-user" onclick="toggleLogoutMenu()" style="cursor:pointer;"></i>
-                        <div id="logoutMenu">
-                           <a href="logout.php">Logout</a>
-                        </div>
+            <div class="nav-item dropdown" style="position: relative;">
+               <?php
+                  if (isset($_SESSION['client']['status']) && $_SESSION['client']['status'] === true) 
+                  {
+                     echo '<div class="nav-link position-relative">
+                           <i class="fa-solid fa-user" onclick="toggleLogoutMenu()" style="cursor:pointer;"></i>
+                           <div id="logoutMenu" class="logout-dropdown">
+                              <a href="logout.php">Logout</a>
+                           </div>
                         </div>';
-               } else {
-                  echo '<a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i></a>';
-               }
-             ?>
+                  } 
+                  else 
+                  {
+                     echo '<a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i></a>';
+                  }
+               ?>
+
+            </div>
+
+
+
+           
+
          </div>
 
       </nav>
@@ -169,35 +184,29 @@
 
 
 <script>
-function toggleMobileMenu() {
-   const menu = document.getElementById('navbarMenu');
-   menu.classList.toggle('show');
-}
+   function openSearch() {
+      document.getElementById("searchOverlay").classList.add("active");
+      setTimeout(() => {
+         document.querySelector("#searchOverlay input").focus();
+      }, 300);
+   }
 
-function openSearch() {
-   document.getElementById("searchOverlay").classList.add("active");
-   setTimeout(() => {
-      document.querySelector("#searchOverlay input").focus();
-   }, 300);
-}
+   function closeSearch() {
+      document.getElementById("searchOverlay").classList.remove("active");
+   }
 
-function closeSearch() {
-   document.getElementById("searchOverlay").classList.remove("active");
-}
+   document.querySelector('#navbarDropdown').addEventListener('click', function(e) {
+   // open dropdown
+   $('.dropdown-toggle').dropdown();
 
-
-function toggleLogoutMenu() {
-   const menu = document.getElementById("logoutMenu");
-   menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
-
-document.querySelector('#navbarDropdown').addEventListener('click', function(e) {
-  // open dropdown
-  $('.dropdown-toggle').dropdown();
-
-  // redirect
-  window.location.href = 'products.php';
-});
+   // redirect
+   window.location.href = 'products.php';
+   });
+   
+   function toggleLogoutMenu() {
+      const menu = document.getElementById("logoutMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+   }
 
 </script>
 

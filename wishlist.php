@@ -1,48 +1,77 @@
-<?php 
- include("include_files/header.php");
+<?php session_start();
+
+    if (!isset($_SESSION['client']['id'])) 
+    {
+        header("location:login.php");
+        exit;
+    }
+
+    $user_id = $_SESSION['client']['id'];
+
+        include("include_files/header.php");
+
 ?>
 
-<div class="container">
-  <h2 class="wishlist-title">
-     <i class="fa fa-heart" style="
-    background: linear-gradient(45deg, #fa003aff, #f509aaff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.2em;
-    margin-right: 10px;
-  "></i>
-  Your Wishlist</h2>
+<section class="inner_page_head">
+   <div class="container-fluid"> 
+      <div class="row">
+         <div class="col-md-12">
+            <div class="full">
+               <h3>Your Wishlist</h3>
+                <nav aria-label="breadcrumb" class="text-center">
+                  <ol class="breadcrumb bg-transparent p-0 mt-2 justify-content-center">
+                      <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+                  </ol>
+                </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
 
-  <div class="row">
-    <?php
-    if (!empty($_SESSION['wishlist'])) {
-        $wishlist_ids = implode(",", array_map('intval', $_SESSION['wishlist']));
-        $q = "SELECT * FROM products WHERE p_id IN ($wishlist_ids) AND p_status = 1";
-        $res = mysqli_query($link, $q);
 
-        if ($res && mysqli_num_rows($res) > 0) {
-            while ($row = mysqli_fetch_assoc($res)) {
-                echo '<div class="col-6 col-sm-6 col-md-4 col-xl-3 mb-4">';
-                echo '<div class="product-card">';
-                echo '<a href="product-single.php?pid='.$row['p_id'].'" class="image-wrapper">';
-                echo '<img src="products_image/'.$row['p_img'].'" alt="'.$row['p_nm'].'">';
-                echo '</a>';
-                echo '<div class="product-info text-center">';
-                echo '<h5>'.$row['p_nm'].'</h5>';
-                echo '<h6 class="price">$'.$row['p_price'].'</h6>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-            }
-        } else {
-            echo '<div class="col-12 empty-msg">No products found in your wishlist.</div>';
-        }
-    } else {
-        echo '<div class="col-12 empty-msg">Your wishlist is empty.</div>';
-    }
-    ?>
-  </div>
-</div>
 <?php
-    include("include_files/footer.php");
+    // Get wishlist products for this user
+    $q = "SELECT * FROM products 
+        WHERE p_id IN (
+            SELECT w_pid FROM wishlist WHERE w_uid = '$user_id'
+        )";
+
+    $res = mysqli_query($link, $q);
+
+    if (mysqli_num_rows($res) > 0) 
+    {
+        echo '<div class="container mt-4">';
+        echo '<div class="row">'; 
+
+
+
+        while ($row = mysqli_fetch_assoc($res)) {
+            echo '<div class="col-6 col-sm-6 col-md-4 col-xl-3 mb-4">';
+            echo '<div class="product-card">';
+            echo '<a href="product-single.php?pid='.$row['p_id'].'" class="image-wrapper">
+                     <img src="products_image/'.$row['p_img'].'">
+                  </a>';
+            echo '<div class="product-info text-center">';
+            echo '<h5>'.$row['p_nm'].'</h5>';
+            echo '<h6 class="price">$'.$row['p_price'].'</h6>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+
+        
+        
+        echo '</div>'; 
+        echo '</div>'; 
+    } 
+    else 
+    {
+        echo "<center><h1>Your wishlist is empty.</h1></center>";
+    }
+?>
+
+<?php
+include("include_files/footer.php");
 ?>

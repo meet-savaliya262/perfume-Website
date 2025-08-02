@@ -48,15 +48,13 @@ ob_end_flush();
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star-half-alt"></i>
-        
-      <a class="nav-link wishlisticon" href="add_to_wishlist.php?pid=<?php echo $row['p_id']; ?>" style="position: relative;">
-        <i class="fa-solid fa-heart"></i>
-      </a>
-
+        <a href="wishlist_add.php?pid=<?php echo $row['p_id']; ?>" class="nav-link wishlisticon">
+          <i class="fa-solid fa-heart"></i>
+        </a>
       </div>
        
 
-      <p  style="font-weight:500;"><?php echo $row['p_description']; ?></p>
+      <p  style="font-weight:500;"><?php echo $row['p_short_desc']; ?></p>
       <h4>Price:₹<?php echo $row['p_price']; ?></h4>
 
           
@@ -114,9 +112,26 @@ ob_end_flush();
       </div>
     </div>
   </div>
+  <!-- description,addditional info -->
+  <div class="tab-buttons">
+    <div class="tab-button active" onclick="showTab(0)">Description</div>
+    <div class="tab-button" onclick="showTab(1)">Additional information</div>
+  </div>
 
-  
+  <div class="tab-content active">
+    <p><?php echo $row['p_description'];  ?></p>
+  </div>
+
+  <div class="tab-content">
+    <p><?php echo $row['p_add_info'];  ?></p>
+  </div>
+
+  <!-- end description,addditional info -->
+
 </div>
+
+
+
 
 <!-- JS Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -141,6 +156,19 @@ ob_end_flush();
       }
     });
   });
+
+   function showTab(index) {
+      var buttons = document.querySelectorAll('.tab-button');
+      var contents = document.querySelectorAll('.tab-content');
+
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+        contents[i].classList.remove('active');
+      }
+
+      buttons[index].classList.add('active');
+      contents[index].classList.add('active');
+    }
 </script>
 
 

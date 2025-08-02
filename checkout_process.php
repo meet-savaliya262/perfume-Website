@@ -69,7 +69,7 @@
             $key.=substr($a,rand(0,34),1);
           }
 
-          $t=time();
+          $t = date("Y-m-d H:i:s"); 
           $uid=$_SESSION['client']['id'];
 
           $pids=array();

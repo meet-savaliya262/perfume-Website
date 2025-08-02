@@ -25,7 +25,7 @@
             else
             {
                include("include_files/config.php");
-               $t=time();
+               $t = date("Y-m-d H:i:s"); 
                $q="insert into contact(co_fnm,co_email,co_msg,co_time)values('".$fnm."','".$email."','".$msg."','".$t."')";
                mysqli_query($link,$q);
                echo "Done! massage sent succesfullys";

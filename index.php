@@ -13,7 +13,7 @@
     <!-- Slide 1 -->
     <div class="carousel-item active">
       <a href="products.php">
-       <img src="images/hero-1.png" class="d-block w-100 carousel-img" alt="...">
+       <img src="images/hero-1.jpg" class="d-block w-100 carousel-img" alt="...">
       </a>
     </div>
     <!-- Slide 2 -->
@@ -239,7 +239,7 @@
          <div class="container">
             <div class="heading_container heading_center">
                <h2>
-                  Our <span>products</span>
+                  Latest <span>products</span>
                </h2>
             </div>
             <div class="row">
@@ -345,7 +345,7 @@
                   </a>';
             echo '<div class="product-info text-center">';
             echo '<h5>'.$row['p_nm'].'</h5>';
-            echo '<h6 class="price">$'.$row['p_price'].'</h6>';
+            echo '<h6 class="price">₹'.$row['p_price'].'</h6>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -369,12 +369,12 @@
         {
           if(isset($_GET['cid']))
           {
-            echo '<a href="products.php?cid='.$_GET['cid'].'
+            echo '<a href="index.php?cid='.$_GET['cid'].'
                   &page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
           }
           else
           {
-            echo '<a href="products.php?page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
+            echo '<a href="index.php?page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
           }
         }
       ?>
@@ -401,12 +401,12 @@
         {
           if(isset($_GET['cid']))
           {
-            echo '<a href="products.php?cid='.$_GET['cid'].'
+            echo '<a href="index.php?cid='.$_GET['cid'].'
                   &page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
           }
           else
           {
-            echo '<a href="products.php?page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
+            echo '<a href="index.php?page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
           }
         }
       ?>
