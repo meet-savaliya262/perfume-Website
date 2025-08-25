@@ -11,7 +11,7 @@ body {
 }
 
 .layout_padding {
-  padding: 70px 0;
+  padding: 20px 0;
 }
 
 .layout_padding2 {
@@ -167,19 +167,28 @@ a:focus {
 @media (max-width: 991px) {
   .navbar-nav {
     flex-direction: column;
-    gap: 0;
+    gap: 15px;
+    text-align: center;
+    background: #888a8c;   /* 🔹 background color */
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
   }
 
   .navbar-nav .nav-link {
-    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 900;     /* 🔹 bold text */
+    color: #f6f0f0;
+    padding: 12px 0;
+    width: 100%;
   }
 
   .navbar-nav .dropdown-menu {
-    position: static;
+    background-color: #f8f9fa; 
     box-shadow: none;
-    margin-top: 0;
+    text-align: center;
   }
 }
+
 
 /* icons desktop */
 .icon-group {
@@ -217,6 +226,7 @@ a:focus {
 #logoutMenu a:hover {
   color: #e91e63;
 }
+
 
 /* ICONS MOBILE VIEW*/
 .mobile-icons {
@@ -1071,6 +1081,19 @@ form input[type="submit"]:focus {
 .tab-content.active {
   display: block;
 }
+.wish-icon {
+    position: absolute;
+    top: 6px;
+    right: 25px;
+    background: transparent;
+    padding: 6px 8px;
+    border-radius: 50%;
+}
+.wish-icon i {
+  font-size: 22px;
+  color: #333;   /* default color */
+  transition: color 0.3s ease;
+}
 @media (max-width: 468px)
 {
   .product-image
@@ -1549,21 +1572,52 @@ justify-content: center;
 }
 
 /* Custom Logout Dropdown Style */
-.logout-dropdown {
-   display: none;
-   position: absolute;
-   top: 40px;
-   right: 0;
-   background: white;
-   padding: 10px 15px;
-   border-radius: 8px;
-   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-   z-index: 999;
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #333 !important;     
+  background: #fff !important;   
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out;
 }
-.logout-dropdown a {
-   color: #333;
-   text-decoration: none;
+
+.logout-btn i {
+  color: #555 !important;
 }
+
+.logout-btn:hover {
+  background: #f5f5f5 !important;
+  border-color: #aaa !important;
+  color: #000 !important;
+}
+/* Mobile screen fix */
+@media (max-width: 768px) {
+  .logout-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 16px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    color: #333 !important;
+    text-decoration: none !important;
+  }
+
+  .logout-btn i {
+    margin-right: 6px;
+    color: #555 !important;
+  }
+}
+
+
 
 /* filter section */
 .filter{
@@ -1907,6 +1961,23 @@ justify-content: center;
 .wishlist-heart:hover {
   transform: scale(1.2);
   opacity: 0.8;
+}
+
+.wishlist-icon {
+    position: absolute;
+    top: 6px;
+    right: 25px;
+    background: transparent;
+    padding: 6px 8px;
+    border-radius: 50%;
+}
+
+.wishlist-icon i {
+    color: #e60023; /* Always red heart */
+    font-size: 18px;
+}
+.wishlist-icon a {
+    text-decoration: none;
 }
 
 

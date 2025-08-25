@@ -24,6 +24,7 @@
       <title>Famms - Fashion HTML Template</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="css/bootstrap.css " />
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
       <!-- font awesome style -->
       <link rel="stylesheet" href="fontawesome/css/all.min.css">
       <!-- Custom styles for this template -->
@@ -72,10 +73,15 @@
          </div>
 
 
+               
+               
          <!-- Toggle Button -->
-         <button class="navbar-toggler" type="button" onclick="toggleMobileMenu()">
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" 
+            aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span><i class="fas fa-bars"></i></span>
          </button>
+
+
 
          <!-- Menu Center (Desktop), Slide Menu (Mobile) -->
          <div class="collapse navbar-collapse justify-content-center" id="navbarMenu">
@@ -112,6 +118,10 @@
                   <a class="nav-link" href="wishlist.php">Wishlist</a>
                </li>
 
+                <li class="nav-item">
+                  <a class="nav-link" href="account.php">Account</a>
+               </li>
+
             </ul>
          </div>
 
@@ -140,31 +150,24 @@
             </div>
 
             <!-- User Icon / Logout -->
+           
             <div class="nav-item dropdown" style="position: relative;">
                <?php
-                  if (isset($_SESSION['client']['status']) && $_SESSION['client']['status'] === true) 
-                  {
-                     echo '<div class="nav-link position-relative">
-                           <i class="fa-solid fa-user" onclick="toggleLogoutMenu()" style="cursor:pointer;"></i>
-                           <div id="logoutMenu" class="logout-dropdown">
-                              <a href="logout.php">Logout</a>
-                           </div>
-                        </div>';
-                  } 
-                  else 
-                  {
+                  if (isset($_SESSION['client']['status']) && $_SESSION['client']['status'] === true) {
+                     echo '
+                     <div class="nav-link position-relative">
+                        <div id="logoutMenu" class="logout-dropdown">
+                           <a href="logout.php" class="logout-btn">
+                              <i class="fa-solid fa-right-from-bracket"></i> Logout
+                           </a>
+                        </div>
+                     </div>';
+                  } else {
                      echo '<a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i></a>';
                   }
                ?>
-
             </div>
-
-
-
-           
-
          </div>
-
       </nav>
    </div>
 
@@ -207,6 +210,15 @@
       const menu = document.getElementById("logoutMenu");
       menu.style.display = (menu.style.display === "block") ? "none" : "block";
    }
+
+   document.addEventListener("click", function(event) {
+      const menu = document.getElementById("logoutMenu");
+      const userIcon = document.querySelector(".fa-user");
+
+      if (menu && !menu.contains(event.target) && !userIcon.contains(event.target)) {
+         menu.style.display = "none";
+      }
+   });
 
 </script>
 

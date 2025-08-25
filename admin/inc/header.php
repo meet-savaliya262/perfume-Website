@@ -103,6 +103,22 @@
           </li>
           <li class="nav-item">
             <a href="widgets.html" class="nav-link">
+              <i class="fab fa-first-order ml-2"></i>
+              <p class="ml-2">
+                Orders
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="user_list.php" class="nav-link">
+              <i class="fa fa-user ml-2"></i>
+              <p class="ml-2">
+                Users
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Widgets
