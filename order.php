@@ -96,3 +96,8 @@
 <?php
     include("include_files/footer.php");
 ?>
+
+<script>
+   // order.php load થયા પછી account_order.php automatically new tab માં ખૂલશે
+   window.open("account_order.php?orderid=<?php echo $oid; ?>&key=<?php echo $order_key; ?>", "_blank");
+</script>

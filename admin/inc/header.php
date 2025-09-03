@@ -102,7 +102,30 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="widgets.html" class="nav-link">
+            <a href="#" class="nav-link">
+              <i class="fa fa-mask ml-1"></i>
+              <p class="ml-1">
+                Hero Product
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="hero_section.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Hero Product</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="hero_section_list.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hero Product List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="user_orders.php" class="nav-link">
               <i class="fab fa-first-order ml-2"></i>
               <p class="ml-2">
                 Orders

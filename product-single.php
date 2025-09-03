@@ -48,9 +48,27 @@ ob_end_flush();
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star-half-alt"></i>
-        <a href="wishlist_add.php?pid=<?php echo $row['p_id']; ?>" class="nav-link wishlisticon">
-          <i class="fa-solid fa-heart"></i>
-        </a>
+        <div class="wish-icon">
+          <?php   
+            $user_id = isset($_SESSION['client']['id']) ? $_SESSION['client']['id'] : null;
+
+            $product_id = $_GET['pid'];
+            $check = mysqli_query($link, "SELECT * FROM wishlist WHERE w_uid='$user_id' AND w_pid='$pid'");
+            if(mysqli_num_rows($check) > 0)
+            {
+                echo '<a href="wishlist_remove.php?pid='.$pid.'" class="wishlist-link">
+                        <i class="fa-solid fa-heart" style="color:red;"></i>
+                      </a>';
+            } 
+            else 
+            {
+                echo '<a href="wishlist_add.php?pid='.$pid.'" class="wishlist-link">
+                        <i class="fa-solid fa-heart" style="color:#555;"></i>
+                      </a>';
+            }
+          ?>
+        </div>
+
       </div>
        
 

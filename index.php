@@ -8,22 +8,24 @@
     <li data-target="#heroCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#heroCarousel" data-slide-to="1"></li>
   </ol>
-
-  <div class="carousel-inner">
-    <!-- Slide 1 -->
-    <div class="carousel-item active">
-      <a href="products.php">
-       <img src="images/hero-1.jpg" class="d-block w-100 carousel-img" alt="...">
-      </a>
-    </div>
-    <!-- Slide 2 -->
-    <div class="carousel-item">
-      <a href="products.php">
-         <img src="images/hero-2.jpg" class="d-block w-100 carousel-img" alt="...">
-      </a>
-    </div>
-  </div>
-
+   <div class="carousel-inner">
+      <?php
+         $hq="select * from hero where h_status=1";
+         $hres=mysqli_query($link,$hq);
+         $first = true;
+         while($hrow=mysqli_fetch_assoc($hres))
+         {
+            $activeClass = $first ? 'active' : '';
+            echo '<div class="carousel-item '.$activeClass.'">
+                     <a href="products.php">
+                        <img src="hero_product_image/'.$hrow['h_img'].'" class="d-block w-100 carousel-img" alt="...">
+                     </a>
+                  </div>';
+            $first = false;
+         }
+      ?>
+   </div>
+      
   <!-- Controls -->
   <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -227,12 +229,7 @@
       </section>
       <!-- end why section -->
       
-      <!-- arrival section -->
-      <div class="image-container">
-         <img src="images/new1.png" alt="Image 1" />
-         <img src="images/new2.png" alt="Image 2" />
-      </div>
-      <!-- end arrival section -->
+      
 
       <!-- latest products -->
        <section class="product_section layout_padding">
@@ -241,45 +238,11 @@
                <h2>
                   Latest <span>products</span>
                </h2>
+               <div class="image-container">
+         <img src="images/new1.png" alt="Image 1" />
+         <img src="images/new2.png" alt="Image 2" />
+      </div>
             </div>
-            <div class="row">
-               <div class="col-6 col-md-4 col-lg-3 mb-4">
-                  <div class="product-card">
-                     <img src="images/p1.png" class="image-wrapper">
-                     <div class="product-info text-center">
-                        <h5>Men's shirt</h5>
-                        <p class="price">₹500</p>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="col-6 col-md-4 col-lg-3 mb-4">
-                  <div class="product-card">
-                     <img src="images/p2.png" class="image-wrapper">
-                     <div class="product-info text-center">
-                        <h5>Men's shirt</h5>
-                        <p class="price">₹500</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-6 col-md-4 col-lg-3 mb-4">
-                  <div class="product-card">
-                     <img src="images/p3.png" class="image-wrapper">
-                     <div class="product-info text-center">
-                        <h5>Men's shirt</h5>
-                        <p class="price">₹500</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-6 col-md-4 col-lg-3 mb-4">
-                  <div class="product-card">
-                     <img src="images/p4.png" class="image-wrapper">
-                     <div class="product-info text-center">
-                        <h5>Men's shirt</h5>
-                        <p class="price">₹500</p>
-                     </div>
-                  </div>
-               </div>
          </div>
       </section>
 

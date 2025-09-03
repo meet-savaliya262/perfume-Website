@@ -34,9 +34,7 @@
 <?php
     // Get wishlist products for this user
     $q = "SELECT * FROM products 
-        WHERE p_id IN (
-            SELECT w_pid FROM wishlist WHERE w_uid = '$user_id'
-        )";
+        WHERE p_id IN (SELECT w_pid FROM wishlist WHERE w_uid = '$user_id')";
 
     $res = mysqli_query($link, $q);
 
@@ -53,6 +51,12 @@
             echo '<a href="product-single.php?pid='.$row['p_id'].'" class="image-wrapper">
                      <img src="products_image/'.$row['p_img'].'">
                   </a>';
+            echo '<div class="wishlist-icon">
+                    <a href="wishlist_remove.php?pid='.$row['p_id'].'">
+                        <i class="fas fa-heart"></i>
+                    </a>
+                </div>';
+
             echo '<div class="product-info text-center">';
             echo '<h5>'.$row['p_nm'].'</h5>';
             echo '<h6 class="price">$'.$row['p_price'].'</h6>';

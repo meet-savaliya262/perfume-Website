@@ -42,7 +42,7 @@
 
          <!-- Brand Logo -->
          <a class="navbar-brand" href="index.php">
-             <img src="images/logo.png" alt="Logo" height="70">
+             <img src="images/logo1.png" alt="Logo" height="70">
          </a>
 
          <!-- Mobile Left Icons -->
@@ -119,7 +119,7 @@
                </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="account.php">Account</a>
+                  <a class="nav-link" href="account_order.php">Orders</a>
                </li>
 
             </ul>
@@ -224,3 +224,6 @@
 
    </body>
 </html>
+
+
+<!-- http://localhost/@meet/Perfume/order.php?orderid=4&key=wr2iwqkdf9 -->

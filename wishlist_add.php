@@ -18,7 +18,7 @@
         
         if (mysqli_num_rows($res) > 0) 
         {
-            echo "Already in wishlist.";
+            header("location:products.php");
         } 
         else 
         {

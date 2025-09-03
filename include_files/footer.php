@@ -6,7 +6,7 @@
                    <div class="full">
                       <div class="logo_footer">
                         <a href="#">
-                           <img height="100" src="images/logo.png" alt="#"/>
+                           <img height="100" src="images/plogo.png" alt="#"/>
                         </a>                    
                       </div>
                       <div class="information_f">

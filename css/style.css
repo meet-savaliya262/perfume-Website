@@ -1980,6 +1980,49 @@ justify-content: center;
     text-decoration: none;
 }
 
+/* Your order page */
+.order-card {
+  margin-bottom: 20px;       /* each card ni niche space */
+  padding: 15px;             /* andar padding */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.order-card img {
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;      /* center horizontally */
+  margin-bottom: 10px;
+  max-width: 100%;     /* responsive */
+  height: auto;
+}
+.order-row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.order-row .col-md-6 {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px; /* rows vachche spacing */
+}
+
+  .row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .col-md-6, .col-sm-12 {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;       /* side spacing cards vachche */
+  }
 
 
 /* 
