@@ -12,9 +12,13 @@ if (!empty($_POST)) {
     if (empty($cnm)) {
         $_SESSION['error']['cnm'] = "Please select category";
     }
+    if(empty($flavor)){
+        $_SESSION['error']['flavor']="please enter flavor name";
+    }
     if (empty($price)) {
         $_SESSION['error']['price'] = "Please enter price";
-    } elseif (!is_numeric($price)) {
+    } 
+    elseif (!is_numeric($price)) {
         $_SESSION['error']['price'] = "Please enter numeric price";
     }
     if (empty($weight)) {
@@ -65,6 +69,7 @@ if (!empty($_POST)) {
                 p_nm = '".$pnm."',
                 p_cat = '".$cnm."',
                 p_price = '".$price."',
+                p_flavor = '".$flavor."',
                 p_weight = '".$weight."',
                 p_short_desc = '".$sdesc."',
                 p_description = '".$desc."',
@@ -79,6 +84,7 @@ if (!empty($_POST)) {
                 p_nm = '".$pnm."',
                 p_cat = '".$cnm."',
                 p_price = '".$price."',
+                p_flavor = '".$flavor."',
                 p_weight = '".$weight."',
                 p_short_desc = '".$sdesc."',
                 p_description = '".$desc."',

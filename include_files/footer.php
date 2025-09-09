@@ -5,9 +5,7 @@
                <div class="col-md-5">
                    <div class="full">
                       <div class="logo_footer">
-                        <a href="#">
-                           <img height="100" src="images/plogo.png" alt="#"/>
-                        </a>                    
+                           <h3><i class="fa fa-star"></i>    Contact Details</h3>          
                       </div>
                       <div class="information_f">
                         <p><strong>ADDRESS:</strong> shree hri sosayati-3,near rangila hanuman,mavdi chok,rajkot-360004</p>
@@ -18,7 +16,7 @@
                </div>
                <div class="col-md-2">
                      <div class="widget_menu">
-                        <h3>Account</h3>
+                        <h3><i class="fa fa-star"></i>   Account</h3>
                         <ul>
                            <li><a href="#">Account</a></li>
                            <li><a href="#">Login</a></li>
@@ -30,7 +28,7 @@
                </div>
                <div class="col-md-5">
                      <div class="widget_menu">
-                        <h3>Newsletter</h3>
+                        <h3><i class="fa fa-star"></i>   Newsletter</h3>
                         <div class="information_f">
                           <p>Subscribe by our newsletter and get update protidin.</p>
                         </div>

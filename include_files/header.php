@@ -42,10 +42,9 @@
 
          <!-- Brand Logo -->
          <a class="navbar-brand" href="index.php">
-             <img src="images/logo1.png" alt="Logo" height="70">
+             <img src="images/logo1.png" class="weblogo" alt="Logo" height="90" width="200">
          </a>
 
-         <!-- Mobile Left Icons -->
          <!-- Mobile Left Icons -->
          <div class="d-lg-none d-flex align-items-center ml-auto mobile-icons">
             
@@ -95,15 +94,7 @@
                   <a class="nav-link" href="products.php" id="navbarDropdown">
                   Products
                   </a>
-                  <div class="dropdown-menu">
-                  <?php
-                     $cat_q = "SELECT * FROM category WHERE cat_status = 1";
-                     $cat_res = mysqli_query($link, $cat_q);
-                     while ($cat_row = mysqli_fetch_assoc($cat_res)) {
-                        echo '<a class="dropdown-item" href="products.php?cid=' . $cat_row['cat_id'] . '">' . $cat_row['cat_nm'] . '</a>';
-                     }
-                  ?>
-                  </div>
+                  
                </li>
 
                <li class="nav-item">

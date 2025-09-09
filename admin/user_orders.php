@@ -1,103 +1,131 @@
 <?php 
-    include("inc/header.php");
+include("inc/header.php");
+include("../include_files/config.php");
+
+$q = "SELECT * FROM orders ORDER BY o_id DESC";
+$res = mysqli_query($link, $q);
 ?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>users Orders</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item active">All Orders</li>
-            </ol>
-          </div>
+<div class="content-wrapper">
+  <!-- Page Header -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Users Orders</h1>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-    <?php
-        if (isset($_SESSION['success']))
-        {
-            echo '<p class="alert alert-success">' . $_SESSION['success'] . '</p>';
-            unset($_SESSION['success']);
-        }
-    ?>
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-          <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">All Users order details</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>no</th>
-                    <th>order_Date</th>
-                    <th>Customer Name</th>
-                    <th>Product Details</th>
-                    <th>Address</th>
-                    <th>contact No</th>
-                    <th>Total</th>
-                    <th>order_status</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                        include('../include_files/config.php');
-                        $q="select * from orders,products where o_id=p_id And o_status=1";
-                        $o_res=mysqli_query($link,$q);
-                        $co=1;
-                        while($o_row=mysqli_fetch_assoc($o_res))
-                        {
-                          echo'<tr>
-                                <td>'.$co.'</td>
-                                <td>'.$o_row['o_time'].'</td>
-                                <td>'.$o_row['o_fnm'].'&nbsp;'.$o_row['o_lnm'].'</td>
-                                <td>'.$o_row['p_nm'].'</td>
-                                <td>'.$o_row['o_address_line1'].'</td>
-                                <td>'.$o_row['o_phone'].'</td>
-                                <td>$3000</td>
-                                <td>
-                                 <select name="status" class="form-control input-sm">
-                                    <option value="Pending">Pending</option>
-                                    <option value="Hold">Hold</option>
-                                    <option value="Delivered">Delivered</option>
-                                    <option value="Cancelled">Cancelled</option>
-                                </select>
-                                </td>
-                                </tr>';
-                              $co++;
-                        }
-
-                   ?>
-                  </tbody>
-                </table>
-                  </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
-            
-          </div>
-          <!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active">All Orders</li>
+          </ol>
         </div>
-        <!-- /.row -->
       </div>
-      <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-<?php 
-    include("inc/footer.php");
+    </div>
+  </section>
 
-?>
+  <?php
+  if (isset($_SESSION['success'])) {
+      echo '<p class="alert alert-success">' . $_SESSION['success'] . '</p>';
+      unset($_SESSION['success']);
+  }
+  ?>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">All Users Order Details</h3>
+            </div>
+
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Order Date</th>
+                    <th>Customer Name</th>
+                    <th>Products</th>
+                    <th>Address</th>
+                    <th>Contact No</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $co = 1;
+                  while ($o_row = mysqli_fetch_assoc($res)) {
+                      // product ids
+                      $pids = json_decode($o_row['o_pid']);
+                      
+                      // check if quantity column exist else fallback 1
+                      $qtys = [];
+                      if (!empty($o_row['o_qty'])) {
+                          $qtys = json_decode($o_row['o_qty']);
+                      }
+
+                      $ids = implode(",", $pids);
+
+                      $p_q = "SELECT * FROM products WHERE p_id IN ($ids)";
+                      $p_res = mysqli_query($link, $p_q);
+
+                      $total = 0;
+
+                      echo '<tr>
+                        <td>'.$co.'</td>
+                        <td>'.date("d M Y", strtotime($o_row['o_time'])).'</td>
+                        <td>'.$o_row['o_fnm'].' '.$o_row['o_lnm'].'</td>
+                        <td>';
+
+                      $index = 0;
+                      while($p_row = mysqli_fetch_assoc($p_res)) {
+                          $qty = isset($qtys[$index]) ? $qtys[$index] : 1;
+                          $subtotal = $p_row['p_price'] * $qty;
+                          $total += $subtotal;
+
+                          echo '<div class="d-flex align-items-center mb-2">
+                                  <img src="../products_image/'.$p_row['p_img'].'" 
+                                       alt="'.$p_row['p_nm'].'" 
+                                       style="width:60px;height:60px;object-fit:cover;border-radius:4px;margin-right:10px;">
+                                  <div>
+                                    <strong>'.$p_row['p_nm'].'</strong><br>
+                                    <small>₹'.$p_row['p_price'].'</small>
+                                  </div>
+                                </div>';
+                          $index++;
+                      }
+
+                      echo '</td>
+                        <td>'.$o_row['o_address_line1'].'<br>'.$o_row['o_city'].', '.$o_row['o_state'].'</td>
+                        <td>'.$o_row['o_phone'].'</td>
+                        <td><strong>₹'.$total.'</strong></td>
+                        <td>
+                          <select name="status" class="form-control input-sm">
+                            <option '.($o_row['o_status']=="Pending"?"selected":"").'>Pending</option>
+                            <option '.($o_row['o_status']=="Hold"?"selected":"").'>Hold</option>
+                            <option '.($o_row['o_status']=="Delivered"?"selected":"").'>Delivered</option>
+                            <option '.($o_row['o_status']=="Cancelled"?"selected":"").'>Cancelled</option>
+                          </select>
+                        </td>
+                      </tr>';
+
+                      $co++;
+                  }
+                  ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<?php include("inc/footer.php"); ?>

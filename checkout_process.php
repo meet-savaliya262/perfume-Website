@@ -89,14 +89,15 @@
             mysqli_query($link,$q);
             $order_id=mysqli_insert_id($link);
             $order_id = mysqli_insert_id($link);
-            header("location:account_order.php?orderid=".$order_id."&key=".$key);
+            unset($_SESSION['cart']);
+            header("location:account_order.php");
           
 
         }
     }
     else 
     {
-      header("locationn:index.php");
+      header("location:index.php");
     }
 
 

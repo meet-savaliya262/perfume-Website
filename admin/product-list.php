@@ -44,6 +44,7 @@
                     <th>No</th>
                     <th>Name</th>
                     <th>category</th>
+                    <th>Flavor</th>
                     <th>price</th>
                     <th>weight</th>
                     <th>Image</th>
@@ -64,6 +65,7 @@
                                 <td>'.$co.'</td>
                                 <td>'.$p_row['p_nm'].'</td>
                                 <td>'.$p_row['cat_nm'].'</td>
+                                <td>'.$p_row['p_flavor'].'</td>
                                 <td>₹'.$p_row['p_price'].'</td>
                                 <td>'.$p_row['p_weight'].'</td>
                                 <td><img src="../products_image/'.$p_row['p_img'].'" width="60" height="60"></td>

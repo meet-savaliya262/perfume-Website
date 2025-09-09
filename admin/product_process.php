@@ -24,6 +24,10 @@
         {
             $_SESSION['error']['weight']="please enter product weight";
         }
+        if(empty($flavor))
+        {
+            $_SESSION['error']['flavor']="please enter flavor name";
+        }
         if(empty($sdesc))
         {
             $_SESSION['error']['sdesc']="please enter short description";
@@ -58,8 +62,8 @@
             $t = time(); 
             $pimg_nm=$t."_".$_FILES['pimg']['name'];
             move_uploaded_file($_FILES['pimg']['tmp_name'],"../products_image/".$pimg_nm);
-            $q="insert into products(p_nm,p_cat,p_price,p_weight,p_short_desc,p_description,p_add_info,p_time,p_img)
-                values('".$pnm."','".$cnm."','".$price."','".$weight."','".$sdesc."','".$desc."','".$ainfo."','".$t."','".$pimg_nm."')";
+            $q="insert into products(p_nm,p_cat,p_flavor,p_price,p_weight,p_short_desc,p_description,p_add_info,p_time,p_img)
+                values('".$pnm."','".$cnm."','".$flavor."','".$price."','".$weight."','".$sdesc."','".$desc."','".$ainfo."','".$t."','".$pimg_nm."')";
             mysqli_query($link,$q);
             $_SESSION['success']='Done! product add sccuccessfully';
             header("location:product.php");    

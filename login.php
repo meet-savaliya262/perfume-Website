@@ -166,6 +166,7 @@
   </style>
 </head>
 <body>
+  
 
 <div class="login-container">
   <div class="login-info">
@@ -192,23 +193,11 @@
         <div class="form-group">
           <i class="fa fa-envelope"></i>
           <input type="email" class="form-control" name="login_email" placeholder="Email" required>
-          <?php
-            if(isset($_SESSION['error']['login_email']))
-            {
-                echo '<font color="red">'.$_SESSION['error']['login_email'].'</font>';
-            }
-          ?>
         </div>
        
         <div class="form-group">
           <i class="fa fa-lock"></i>
           <input type="password" class="form-control" name="login_password" placeholder="Password" required>
-          <?php
-            if(isset($_SESSION['error']['login_password']))
-            {
-                echo '<font color="red">'.$_SESSION['error']['login_password'].'</font>';
-            }
-          ?>
         </div>    
 
         <button type="submit" class="btn btn-primary">Log In</button>

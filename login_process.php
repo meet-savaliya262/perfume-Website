@@ -5,11 +5,11 @@
         $_SESSION['error']=array();
         if(empty($login_email))
         {
-            $_SESSION['error']['login_email']="please enter email";
+            $_SESSION['error'][]="please enter email";
         }
         if(empty($login_password))
         {
-            $_SESSION['error']['login_password']="please enter password";
+            $_SESSION['error'][]="please enter password";
         }
         if(! empty($_SESSION['error']))
         {

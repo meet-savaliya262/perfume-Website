@@ -72,7 +72,15 @@
     } 
     else 
     {
-        echo "<center><h1>Your wishlist is empty.</h1></center>";
+        echo '<div class="wishlist-empty text-center p-5">
+                <i class="fa-solid fa-heart-crack icon"></i>
+                <h3>Your Wishlist is Empty</h3>
+                <p class="text-muted">Looks like you have not added anything yet.<br>
+                    Explore our products and save your favorites!</p>
+                <a href="products.php" class="btn browse-btn mt-3">
+                    <i class="fa-solid fa-shop"></i> Browse Products
+                </a>
+            </div>';
     }
 ?>
 

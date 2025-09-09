@@ -65,7 +65,16 @@
                             }
                         ?>
                     </select>
-
+                  </div>
+                  <div class="form-group">
+                    <label for="flavor">Flavor</label>
+                    <input type="text"  name="flavor" class="form-control" id="flavor" >
+                    <?php
+                        if(isset($_SESSION['error']['flavor']))
+                        {
+                            echo '<font color="red">'.$_SESSION['error']['flavor'].'</font>';
+                        }
+                     ?>
                   </div>
                   <div class="form-group">
                     <label for="price">Price</label>

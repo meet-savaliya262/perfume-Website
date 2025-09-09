@@ -81,6 +81,16 @@
                     </select>
 
                   </div>
+                   <div class="form-group">
+                    <label for="flavor">Flavor</label>
+                    <input type="text"  name="flavor" class="form-control"  value="<?php echo $p_flavor; ?>" id="flavor" >
+                    <?php
+                        if(isset($_SESSION['error']['flavor']))
+                        {
+                            echo '<font color="red">'.$_SESSION['error']['flavor'].'</font>';
+                        }
+                     ?>
+                  </div>
                   <div class="form-group">
                     <label for="price">Price</label>
                     <input type="text"  name="price" value="<?php echo $p_price; ?>" class="form-control" id="price" >
