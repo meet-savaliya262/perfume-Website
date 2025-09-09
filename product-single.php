@@ -34,7 +34,7 @@ ob_end_flush();
   <div class="row">
     <!-- Left: Product Image -->
     <div class="col-md-6">
-      <img src="products_image/<?php echo $row['p_img']; ?>" class="product-image" alt="Product Image" width="400" height="400">
+      <img src="products_image/<?php echo $row['p_img']; ?>" class="product-image " alt="Product Image" width="500" height="500">
     </div>
 
     <!-- Right: Product Details -->
@@ -118,6 +118,7 @@ ob_end_flush();
       <!-- Extra Info -->
       <div class="product-meta">
         <p  style="font-weight:500;"><strong>Category:</strong>&nbsp;&nbsp;&nbsp;<?php echo $row['cat_nm']; ?></p>
+        <p  style="font-weight:500;"><strong>Flavor:</strong>&nbsp;&nbsp;&nbsp;<?php echo $row['p_flavor']; ?></p>
         <p  style="font-weight:500;"><strong>Weight:</strong>&nbsp;&nbsp;&nbsp;<?php echo $row['p_weight']; ?></p>
         <p><strong>Share on:</strong>
             <div class="social-icons">

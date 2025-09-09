@@ -1,5 +1,5 @@
 <?php 
-include("include_files/header.php");
+  include("include_files/header.php");
 ?>
 
 <section class="inner_page_head">
@@ -34,41 +34,53 @@ include("include_files/header.php");
         <div class="filter-box p-3 border rounded shadow-sm bg-light">
           <h5 class="mb-3 filter">Filter By</h5>
 
-          <!-- Category Filter -->
-          <div class="mb-4">
-            <h6>Category</h6>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-dark">Perfume</a></li>
-              <li><a href="#" class="text-dark">Deodorant</a></li>
-              <li><a href="#" class="text-dark">Attar</a></li>
-              <li><a href="#" class="text-dark">Combo</a></li>
-            </ul>
-          </div>
+          <!-- All filters -->
+          <form method="GET" action="products.php">
+            
+            <!-- Category Filter -->
+            <div class="mb-4">
+              <h6>Category</h6>
+              <select name="cid" class="form-control">
+                <option value="">-- Select Category --</option>
+                <?php
+                $cat_q="SELECT * FROM category WHERE cat_status=1";
+                $cat_res=mysqli_query($link,$cat_q);
+                while($cat_row=mysqli_fetch_assoc($cat_res)) {
+                    $selected = (isset($_GET['cid']) && $_GET['cid'] == $cat_row['cat_id']) ? "selected" : "";
+                    echo '<option value="'.$cat_row['cat_id'].'" '.$selected.'>'.$cat_row['cat_nm'].'</option>';
+                }
+                ?>
+              </select>
+            </div>
 
-          <!-- Price Filter -->
-          <div class="mb-4">
-            <h6>Price</h6>
-            <form action="#" method="GET">
+            <!-- Price Filter -->
+            <div class="mb-4">
+              <h6>Price</h6>
               <div class="d-flex mb-2">
-                <input type="number" name="min_price" placeholder="Min" min="1" class="form-control form-control-sm me-2">
-                <input type="number" name="max_price" placeholder="Max" min="1" class="form-control form-control-sm">
+                <input type="number" name="min_price" value="<?php echo isset($_GET['min_price']) ? $_GET['min_price'] : ''; ?>" placeholder="Min" min="1" class="form-control form-control-sm me-2">
+                <input type="number" name="max_price" value="<?php echo isset($_GET['max_price']) ? $_GET['max_price'] : ''; ?>" placeholder="Max" min="1" class="form-control form-control-sm">
               </div>
-              <button type="submit" class="btn btn-sm btn-dark w-100">Apply</button>
-            </form>
-          </div>
+            </div>
 
-          <!-- Flavor Filter -->
-          <div>
-            <h6>Flavor</h6>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-dark">Woody</a></li>
-              <li><a href="#" class="text-dark">Citrus</a></li>
-              <li><a href="#" class="text-dark">Spicy</a></li>
-              <li><a href="#" class="text-dark">Sweet</a></li>
-            </ul>
-          </div>
+            <!-- Flavor Filter -->
+            <div class="mb-4">
+              <h6>Flavor</h6>
+              <select name="fid" class="form-control">
+                <option value="">-- Select Flavor --</option>
+                <?php
+                $f_q="SELECT DISTINCT p_flavor FROM products WHERE p_status=1";
+                $f_res=mysqli_query($link,$f_q);
+                while($f_row=mysqli_fetch_assoc($f_res)) {
+                    $selected = (isset($_GET['fid']) && $_GET['fid'] == $f_row['p_flavor']) ? "selected" : "";
+                    echo '<option value="'.$f_row['p_flavor'].'" '.$selected.'>'.$f_row['p_flavor'].'</option>';
+                }
+                ?>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-sm btn-dark w-100">Apply</button>
+          </form>
         </div>
-
       </div>
 
       <!-- PRODUCTS - RIGHT SIDE -->
@@ -76,51 +88,48 @@ include("include_files/header.php");
         <div class="row">
 
           <?php
-            if(isset($_GET['cid']))
-            {
-              $catid=$_GET['cid'];
-              $t_q="select count(*) as total from products where p_cat=".$catid." and p_status=1";
-              $t_res=mysqli_query($link,$t_q);
-              $t_row=mysqli_fetch_assoc($t_res);
-              $total_item=$t_row['total'];
+            // build dynamic WHERE
+            $where = "p_status=1";
+
+            if (!empty($_GET['cid'])) {
+              $cid = (int) $_GET['cid'];
+              $where .= " AND p_cat=$cid";
             }
-            else
-            {
-              $t_q="select count(*) as total from products where p_status=1";
-              $t_res=mysqli_query($link,$t_q);
-              $t_row=mysqli_fetch_assoc($t_res);
-              $total_item=$t_row['total'];
+
+            if (!empty($_GET['fid'])) {
+              $fid = mysqli_real_escape_string($link,$_GET['fid']);
+              $where .= " AND p_flavor='$fid'";
             }
-            
-            $cur_page= (isset($_GET['page'])? $_GET['page'] : 1) ;
+
+            if (!empty($_GET['min_price']) && !empty($_GET['max_price'])) {
+              $min = (int) $_GET['min_price'];
+              $max = (int) $_GET['max_price'];
+              $where .= " AND p_price BETWEEN $min AND $max";
+            }
+
+            // total items
+            $t_q="SELECT COUNT(*) as total FROM products WHERE $where";
+            $t_res=mysqli_query($link,$t_q);
+            $t_row=mysqli_fetch_assoc($t_res);
+            $total_item=$t_row['total'];
+
+            $cur_page= (isset($_GET['page'])? $_GET['page'] : 1);
             $page_per_item=6;
-            $total_page = ceil($total_item/$page_per_item);
+            $total_page = ($total_item>0)? ceil($total_item/$page_per_item):1;
             $start_pos = ($cur_page - 1) * $page_per_item;
 
-            if(isset($_GET['cid']))
-            {
-              $catid=$_GET['cid'];
-              $q = "SELECT * FROM products where p_cat=".$catid." AND p_status=1
-                    LIMIT ".$start_pos.",".$page_per_item;
-            }
-            else
-            {
-              $q = "SELECT * FROM products where p_status=1  
-                    LIMIT ".$start_pos.",".$page_per_item;
-            }
-            $res = mysqli_query($link, $q);
+            // fetch products
+            $q = "SELECT * FROM products WHERE $where LIMIT $start_pos,$page_per_item";
+            $res = mysqli_query($link,$q);
 
-            if (mysqli_num_rows($res) <= 0) 
-            {
+            if (mysqli_num_rows($res) <= 0) {
               echo "<div class='col-12 text-center'><p>No products found.</p></div>";
-            } 
-            else 
-            {
+            } else {
               while ($row = mysqli_fetch_assoc($res)) {
                 echo '<div class="col-6 col-sm-6 col-md-4 col-xl-4 mb-4">';
                 echo '<div class="product-card">';
                 echo '<a href="product-single.php?pid='.$row['p_id'].'" class="image-wrapper">
-                        <img src="products_image/'.$row['p_img'].'">
+                        <img src="products_image/'.$row['p_img'].'" alt="'.$row['p_nm'].'">
                       </a>';
                 echo '<div class="product-info text-center">';
                 echo '<h5>'.$row['p_nm'].'</h5>';
@@ -133,7 +142,7 @@ include("include_files/header.php");
           ?>
         </div>
 
-        <!-- pagination -->
+           <!-- pagination -->
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
