@@ -46,9 +46,31 @@ $res = mysqli_query($link, $q);
             <strong>Order Date:</strong> <?php echo date("d M Y", strtotime($row['o_time'])); ?>
          </div>
          <div>
-            <span class="badge bg-success px-3 py-2">
-              <?php echo $row['o_status']; ?>
-            </span>
+           <?php
+               $status = strtolower(trim($row['o_status']));
+
+               if ($status == 'pending') {
+                  $cls = "status-badge pending";
+               } 
+               elseif ($status == 'hold') {
+                  $cls = "status-badge hold";
+               } 
+               elseif ($status == 'cancelled') {
+                  $cls = "status-badge cancelled";
+               } 
+               elseif ($status == 'delivered') {
+                  $cls = "status-badge delivered";
+               } 
+               else {
+                  $cls = "status-badge default";
+               }
+            ?>
+
+               <span class="<?php echo $cls; ?>">
+               <?php echo htmlspecialchars($row['o_status']); ?>
+               </span>
+
+
          </div>
       </div>
 

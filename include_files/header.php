@@ -43,36 +43,7 @@
          <!-- Brand Logo -->
          <a class="navbar-brand" href="index.php">
              <img src="images/logo1.png" class="weblogo" alt="Logo" height="90" width="200">
-         </a>
-
-         <!-- Mobile Left Icons -->
-         <div class="d-lg-none d-flex align-items-center ml-auto mobile-icons">
-            
-            <a class="nav-link" href="#" onclick="openSearch()" title="Search">
-               <i class="fas fa-search"></i>
-            </a>
-
-            <a class="nav-link" href="cart.php" title="Cart">
-               <i class="fa-solid fa-cart-shopping"></i>
-            </a>
-
-            <?php
-               if (isset($_SESSION['client']['status']) && $_SESSION['client']['status'] === true) {
-                  echo '<div class="nav-link position-relative">
-                        <i class="fa-solid fa-user" onclick="toggleLogoutMenu()" style="cursor:pointer;"></i>
-                        <div id="logoutMenu">
-                           <a href="logout.php">Logout</a>
-                        </div>
-                        </div>';
-               } else {
-                  echo '<a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i></a>';
-               }
-             ?>
-
-         </div>
-
-
-               
+         </a>               
                
          <!-- Toggle Button -->
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" 
@@ -109,8 +80,42 @@
                   <a class="nav-link" href="wishlist.php">Wishlist</a>
                </li>
 
-                <li class="nav-item">
+               <li class="nav-item">
                   <a class="nav-link" href="account_order.php">Orders</a>
+               </li>
+
+               <li>
+                  <a class="nav-link" href="#" onclick="openSearch()">
+                     <i class="fas fa-search text-dark"></i>
+                  </a>
+               </li>
+
+               <li>
+                  <a class="nav-link" href="cart.php" title="Cart">
+                     <i class="fa-solid fa-cart-shopping text-dark"></i>
+                     <?php 
+                        if(!empty($_SESSION['cart']))
+                        {
+                           echo '<span class="count-badge">'.count($_SESSION['cart']).'</span>';
+                        }
+                        else
+                        {
+                           echo '<span class="count-badge">0</span>';
+                        }
+                     ?>
+                  </a>
+               </li>
+               <li>
+                  <?php
+                      if (isset($_SESSION['client']['status']) && $_SESSION['client']['status'] === true) 
+                      {
+                        echo '<a href="logout.php" class="action-button log-btn">Logout</a>';
+                      } 
+                      else 
+                      {
+                        echo '<a href="login.php" class="action-button login-btn">Login</a>';
+                      }
+                  ?>
                </li>
 
             </ul>
@@ -119,45 +124,11 @@
          <!-- Right Icons for Desktop -->
          <div class="d-none d-lg-flex align-items-center icon-group">
   
-            <!-- Search Icon -->
-            <a class="nav-link" href="#" onclick="openSearch()">
-               <i class="fas fa-search"></i>
-            </a>
+            
             <!-- Cart Icon -->
              <div class="nav-item position-relative mx-2" style="list-style-type: none;">
-               <a class="nav-link" href="cart.php" title="Cart">
-                  <i class="fa-solid fa-cart-shopping"></i>
-                  <?php 
-                     if(!empty($_SESSION['cart']))
-                     {
-                        echo '<span class="count-badge">'.count($_SESSION['cart']).'</span>';
-                     }
-                     else
-                     {
-                        echo '<span class="count-badge">0</span>';
-                     }
-                  ?>
-               </a>
-            </div>
-
-            <!-- User Icon / Logout -->
-           
-            <div class="nav-item dropdown" style="position: relative;">
-               <?php
-                  if (isset($_SESSION['client']['status']) && $_SESSION['client']['status'] === true) {
-                     echo '
-                     <div class="nav-link position-relative">
-                        <div id="logoutMenu" class="logout-dropdown">
-                           <a href="logout.php" class="logout-btn">
-                              <i class="fa-solid fa-right-from-bracket"></i> Logout
-                           </a>
-                        </div>
-                     </div>';
-                  } else {
-                     echo '<a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i></a>';
-                  }
-               ?>
-            </div>
+               
+               </div>
          </div>
       </nav>
    </div>

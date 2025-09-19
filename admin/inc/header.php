@@ -55,6 +55,16 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+          <li class="nav-item">
+            <a href="index.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -105,7 +115,7 @@
             <a href="#" class="nav-link">
               <i class="fa fa-mask ml-1"></i>
               <p class="ml-1">
-                Hero Product
+                Hero section Product
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -113,13 +123,36 @@
               <li class="nav-item">
                 <a href="hero_section.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Hero Product</p>
+                  <p>Add Hero section Product</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="hero_section_list.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Hero Product List</p>
+                  <p>Hero section Product List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-mask ml-1"></i>
+              <p class="ml-1">
+                Latest Product
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="latest_product.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Latest Product</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="latest_product_list.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Latest Product List</p>
                 </a>
               </li>
             </ul>

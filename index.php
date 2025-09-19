@@ -228,26 +228,43 @@
          </div>
       </section>
       <!-- end why section -->
-      
-      
 
-      <!-- latest products -->
-       <section class="product_section layout_padding">
-         <div class="container">
-            <div class="heading_container heading_center">
-               <h2>
-                  Latest <span>products</span>
-               </h2>
-               <div class="image-container">
-         <img src="images/new1.png" alt="Image 1" />
-         <img src="images/new2.png" alt="Image 2" />
+
+
+
+<!-- Latest Products Section -->
+<section class="product_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center mb-4">
+      <h2>
+        Latest <span>Products</span>
+      </h2>
+    </div>
+      <div class="row">
+         <?php
+            $q = "SELECT * FROM latest_product WHERE l_status = 1 ORDER BY RAND() LIMIT 3";
+            $res = mysqli_query($link, $q);
+            while($row=mysqli_fetch_assoc($res))
+            {
+               echo ' <div class="col-6 col-md-4 col-lg-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                           <img src="products_image/latest_product_img/'.$row['l_img'].'" class="card-img-top img-fluid" alt="Image 1">
+                           <div class="card-body text-center">
+                              <h6 class="card-title mb-2">'.$row['l_nm'].'</h6>
+                              <p class="card-text text-muted mb-2">'.$row['l_description'].'</p>
+                           </div>
+                        </div>
+                      </div>';
+            }
+         ?>
+     
       </div>
-            </div>
-         </div>
-      </section>
-
-      <!-- end latest products -->
+  </div>
+</section>
+<!-- end latest products -->
       
+
+
       <!-- our product section -->
     <section class="product_section layout_padding">
   <div class="container">
