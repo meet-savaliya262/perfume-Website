@@ -44,7 +44,8 @@ if (!empty($_POST)) {
             if ($f_res && mysqli_num_rows($f_res) > 0) 
             {
                 $f_row = mysqli_fetch_assoc($f_res);
-                if (!empty($f_row['l_img']) && file_exists("../products_image/latest_product_img/" . $f_row['l_img'])) {
+                if (!empty($f_row['l_img']) && file_exists("../products_image/latest_product_img/" . $f_row['l_img'])) 
+                {
                     unlink("../products_image/latest_product_img/" . $f_row['l_img']);
                 }
             }

@@ -20,11 +20,11 @@
       <meta name="keywords" content="" />
       <meta name="description" content="" />
       <meta name="author" content="" />
-      <link rel="shortcut icon" href="images/favicon.png" type="">
+      <link rel="shortcut icon" href="images/plogo.png" type="">
       <title>Famms - Fashion HTML Template</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="css/bootstrap.css " />
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
       <!-- font awesome style -->
       <link rel="stylesheet" href="fontawesome/css/all.min.css">
       <!-- Custom styles for this template -->
@@ -55,34 +55,36 @@
 
          <!-- Menu Center (Desktop), Slide Menu (Mobile) -->
          <div class="collapse navbar-collapse justify-content-center" id="navbarMenu">
+            <?php
+               $currentPage = basename($_SERVER['PHP_SELF']);
+            ?>
+
             <ul class="navbar-nav">
-               
-               <li class="nav-item">
+
+               <li class="nav-item <?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">
                   <a class="nav-link" href="index.php">Home</a>
                </li>
 
-               <li class="nav-item dropdown">
-                  <a class="nav-link" href="products.php" id="navbarDropdown">
-                  Products
-                  </a>
-                  
+               <li class="nav-item dropdown <?php echo ($currentPage == 'products.php') ? 'active' : ''; ?>">
+                  <a class="nav-link" href="products.php" id="navbarDropdown">Products</a>
                </li>
 
-               <li class="nav-item">
+               <li class="nav-item <?php echo ($currentPage == 'contact.php') ? 'active' : ''; ?>">
                   <a class="nav-link" href="contact.php">Contact</a>
                </li>
 
-               <li class="nav-item">
+               <li class="nav-item <?php echo ($currentPage == 'about.php') ? 'active' : ''; ?>">
                   <a class="nav-link" href="about.php">About</a>
                </li>
 
-               <li class="nav-item">
+               <li class="nav-item <?php echo ($currentPage == 'wishlist.php') ? 'active' : ''; ?>">
                   <a class="nav-link" href="wishlist.php">Wishlist</a>
                </li>
 
-               <li class="nav-item">
+               <li class="nav-item <?php echo ($currentPage == 'account_order.php') ? 'active' : ''; ?>">
                   <a class="nav-link" href="account_order.php">Orders</a>
                </li>
+
 
                <li>
                   <a class="nav-link" href="#" onclick="openSearch()">

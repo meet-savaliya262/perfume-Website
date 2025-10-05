@@ -38,7 +38,173 @@
 </div>
 
 <!-- end slider section -->
-      <!-- why section -->
+    
+
+<!-- Latest Products Section -->
+<section class="product_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center mb-4">
+      <h2>
+        Latest <span>Products</span>
+      </h2>
+    </div>
+      <div class="row">
+         <?php
+            $q = "SELECT * FROM latest_product WHERE l_status = 1 ORDER BY RAND() LIMIT 3";
+            $res = mysqli_query($link, $q);
+            while($row=mysqli_fetch_assoc($res))
+            {
+               echo ' <div class="col-6 col-md-4 col-lg-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                           <img src="products_image/latest_product_img/'.$row['l_img'].'" class="card-img-top img-fluid" alt="Image 1">
+                           <div class="card-body text-center">
+                              <h6 class="card-title mb-2">'.$row['l_nm'].'</h6>
+                              <p class="card-text text-muted mb-2">'.$row['l_description'].'</p>
+                           </div>
+                        </div>
+                      </div>';
+            }
+         ?>
+     
+      </div>
+  </div>
+</section>
+<!-- end latest products -->
+      
+
+
+      <!-- our product section -->
+    <section class="product_section layout_padding">
+  <div class="container">
+
+    <!-- Page Heading -->
+    <div class="heading_container heading_center mb-4">
+      <h2>Our <span>Products</span></h2>
+    </div>
+  
+
+    <div class="row">
+      <?php
+        if(isset($_GET['cid']))
+        {
+          $catid=$_GET['cid'];
+          $t_q="select count(*) as total from products where p_cat=".$catid." and p_status=1";
+          $t_res=mysqli_query($link,$t_q);
+          $t_row=mysqli_fetch_assoc($t_res);
+          $total_item=$t_row['total'];
+        }
+        else
+        {
+          $t_q="select count(*) as total from products where p_status=1";
+          $t_res=mysqli_query($link,$t_q);
+          $t_row=mysqli_fetch_assoc($t_res);
+          $total_item=$t_row['total'];
+        }
+        
+        $cur_page= (isset($_GET['page'])? $_GET['page'] : 1) ;
+        $page_per_item= 12;
+        $total_page = ceil($total_item/$page_per_item);
+        $start_pos = ($cur_page - 1) * $page_per_item;
+
+        if(isset($_GET['cid']))
+        {
+          $catid=$_GET['cid'];
+          $q = "SELECT * FROM products where p_cat=".$catid." AND p_status=1
+                LIMIT ".$start_pos.",".$page_per_item;
+        }
+        else
+        {
+          $q = "SELECT * FROM products where p_status=1  
+                LIMIT ".$start_pos.",".$page_per_item;
+        }
+        $res = mysqli_query($link, $q);
+
+        if (mysqli_num_rows($res) <= 0) 
+        {
+          echo "<div class='col-12 text-center'><p>No products found.</p></div>";
+        } 
+        else 
+        {
+          while ($row = mysqli_fetch_assoc($res)) {
+            echo '<div class="col-6 col-sm-6 col-md-4 col-xl-3 mb-4">';
+            echo '<div class="product-card">';
+            echo '<a href="product-single.php?pid='.$row['p_id'].'" class="image-wrapper">
+                     <img src="products_image/'.$row['p_img'].'">
+                  </a>';
+            echo '<div class="product-info text-center">';
+            echo '<h5>'.$row['p_nm'].'</h5>';
+            echo '<h6 class="price">₹'.$row['p_price'].'</h6>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+          }
+        }
+      ?>
+
+    </div>
+  </div>
+</section>
+<!-- end our product section -->
+
+<!-- pagination -->
+<?php if ($total_item > $page_per_item) { ?>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="pageination">
+
+      <?php 
+        if($cur_page > 1)
+        {
+          if(isset($_GET['cid']))
+          {
+            echo '<a href="index.php?cid='.$_GET['cid'].'
+                  &page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i> Previous</a>';
+          }
+          else
+          {
+            echo '<a href="index.php?page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i> Previous</a>';
+          }
+        }
+      ?>
+
+      <?php
+
+        for($i=1;$i<=$total_page;$i++)
+        {
+          if(isset($_GET['cid']))
+          {
+              echo '<a href="index.php?cid='.$_GET['cid'].'&page='.$i.'">'.$i.'</a>';
+          }
+          else
+          {
+            echo '<a href="index.php?page='.$i.'">'.$i.'</a>';
+          }
+        }
+
+      ?>
+              
+
+      <?php 
+        if($cur_page < $total_page)
+        {
+          if(isset($_GET['cid']))
+          {
+            echo '<a href="index.php?cid='.$_GET['cid'].'
+                  &page='.($cur_page + 1).'">Next <i class="fas fa-angle-right"></i></a>';
+          }
+          else
+          {
+            echo '<a href="index.php?page='.($cur_page + 1).'">Next <i class="fas fa-angle-right"></i></a>';
+          }
+        }
+      ?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php  } ?>
+  <!-- why section -->
       <section class="why_section layout_padding">
          <div class="container">
             <div class="heading_container heading_center">
@@ -111,7 +277,7 @@
                         <h5>
                            Fast Delivery
                         </h5>
-                        <p>
+                        <p class="text-white">
                            variations of passages of Lorem Ipsum available
                         </p>
                      </div>
@@ -197,7 +363,7 @@
                         <h5>
                            Free Shiping
                         </h5>
-                        <p>
+                        <p class="text-white">
                            variations of passages of Lorem Ipsum available
                         </p>
                      </div>
@@ -218,7 +384,7 @@
                         <h5>
                            Best Quality
                         </h5>
-                        <p>
+                        <p class="text-white">
                            variations of passages of Lorem Ipsum available
                         </p>
                      </div>
@@ -228,173 +394,6 @@
          </div>
       </section>
       <!-- end why section -->
-
-
-
-
-<!-- Latest Products Section -->
-<section class="product_section layout_padding">
-  <div class="container">
-    <div class="heading_container heading_center mb-4">
-      <h2>
-        Latest <span>Products</span>
-      </h2>
-    </div>
-      <div class="row">
-         <?php
-            $q = "SELECT * FROM latest_product WHERE l_status = 1 ORDER BY RAND() LIMIT 3";
-            $res = mysqli_query($link, $q);
-            while($row=mysqli_fetch_assoc($res))
-            {
-               echo ' <div class="col-6 col-md-4 col-lg-4 mb-4">
-                        <div class="card h-100 shadow-sm">
-                           <img src="products_image/latest_product_img/'.$row['l_img'].'" class="card-img-top img-fluid" alt="Image 1">
-                           <div class="card-body text-center">
-                              <h6 class="card-title mb-2">'.$row['l_nm'].'</h6>
-                              <p class="card-text text-muted mb-2">'.$row['l_description'].'</p>
-                           </div>
-                        </div>
-                      </div>';
-            }
-         ?>
-     
-      </div>
-  </div>
-</section>
-<!-- end latest products -->
-      
-
-
-      <!-- our product section -->
-    <section class="product_section layout_padding">
-  <div class="container">
-
-    <!-- Page Heading -->
-    <div class="heading_container heading_center mb-4">
-      <h2>Our <span>Products</span></h2>
-    </div>
-  
-
-    <div class="row">
-      <?php
-        if(isset($_GET['cid']))
-        {
-          $catid=$_GET['cid'];
-          $t_q="select count(*) as total from products where p_cat=".$catid." and p_status=1";
-          $t_res=mysqli_query($link,$t_q);
-          $t_row=mysqli_fetch_assoc($t_res);
-          $total_item=$t_row['total'];
-        }
-        else
-        {
-          $t_q="select count(*) as total from products where p_status=1";
-          $t_res=mysqli_query($link,$t_q);
-          $t_row=mysqli_fetch_assoc($t_res);
-          $total_item=$t_row['total'];
-        }
-        
-        $cur_page= (isset($_GET['page'])? $_GET['page'] : 1) ;
-        $page_per_item= 8;
-        $total_page = ceil($total_item/$page_per_item);
-        $start_pos = ($cur_page - 1) * $page_per_item;
-
-        if(isset($_GET['cid']))
-        {
-          $catid=$_GET['cid'];
-          $q = "SELECT * FROM products where p_cat=".$catid." AND p_status=1
-                LIMIT ".$start_pos.",".$page_per_item;
-        }
-        else
-        {
-          $q = "SELECT * FROM products where p_status=1  
-                LIMIT ".$start_pos.",".$page_per_item;
-        }
-        $res = mysqli_query($link, $q);
-
-        if (mysqli_num_rows($res) <= 0) 
-        {
-          echo "<div class='col-12 text-center'><p>No products found.</p></div>";
-        } 
-        else 
-        {
-          while ($row = mysqli_fetch_assoc($res)) {
-            echo '<div class="col-6 col-sm-6 col-md-4 col-xl-3 mb-4">';
-            echo '<div class="product-card">';
-            echo '<a href="product-single.php?pid='.$row['p_id'].'" class="image-wrapper">
-                     <img src="products_image/'.$row['p_img'].'">
-                  </a>';
-            echo '<div class="product-info text-center">';
-            echo '<h5>'.$row['p_nm'].'</h5>';
-            echo '<h6 class="price">₹'.$row['p_price'].'</h6>';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-          }
-        }
-      ?>
-
-    </div>
-  </div>
-</section>
-<!-- end our product section -->
-
-<!-- pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="pageination">
-
-      <?php 
-        if($cur_page > 1)
-        {
-          if(isset($_GET['cid']))
-          {
-            echo '<a href="index.php?cid='.$_GET['cid'].'
-                  &page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
-          }
-          else
-          {
-            echo '<a href="index.php?page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
-          }
-        }
-      ?>
-
-      <?php
-
-        for($i=1;$i<=$total_page;$i++)
-        {
-          if(isset($_GET['cid']))
-          {
-              echo '<a href="index.php?cid='.$_GET['cid'].'&page='.$i.'">'.$i.'</a>';
-          }
-          else
-          {
-            echo '<a href="index.php?page='.$i.'">'.$i.'</a>';
-          }
-        }
-
-      ?>
-              
-
-      <?php 
-        if($cur_page < $total_page)
-        {
-          if(isset($_GET['cid']))
-          {
-            echo '<a href="index.php?cid='.$_GET['cid'].'
-                  &page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
-          }
-          else
-          {
-            echo '<a href="index.php?page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
-          }
-        }
-      ?>
-      </div>
-    </div>
-  </div>
-</div>
-
       
 <?php 
 

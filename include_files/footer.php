@@ -5,18 +5,18 @@
                <div class="col-md-5">
                    <div class="full">
                       <div class="logo_footer">
-                           <h3><i class="fa fa-star"></i>    Contact Details</h3>          
+                           <h3 class="text-white"><i class="fa fa-star"></i>    Contact Details</h3>          
                       </div>
                       <div class="information_f">
-                        <p><strong>ADDRESS:</strong> shree hri sosayati-3,near rangila hanuman,mavdi chok,rajkot-360004</p>
-                        <p><strong>TELEPHONE:</strong> +91 9727480282</p>
-                        <p><strong>EMAIL:</strong> meetsavliya13@gmail.com</p>
+                        <p class="text-white"><strong>ADDRESS:</strong> shree hri sosayati-3,near rangila hanuman,mavdi chok,rajkot-360004</p>
+                        <p class="text-white"><strong>TELEPHONE:</strong> +91 9727480282</p>
+                        <p class="text-white"><strong>EMAIL:</strong> meetsavliya13@gmail.com</p>
                       </div>
                    </div>
                </div>
                <div class="col-md-2">
                      <div class="widget_menu">
-                        <h3><i class="fa fa-star"></i>   Account</h3>
+                        <h3 class="text-white"><i class="fa fa-star"></i>   Account</h3>
                         <ul>
                            <li><a href="#">Account</a></li>
                            <li><a href="#">Login</a></li>
@@ -28,9 +28,9 @@
                </div>
                <div class="col-md-5">
                      <div class="widget_menu">
-                        <h3><i class="fa fa-star"></i>   Newsletter</h3>
+                        <h3 class="text-white"><i class="fa fa-star"></i>   Newsletter</h3>
                         <div class="information_f">
-                          <p>Subscribe by our newsletter and get update protidin.</p>
+                          <p class="text-white">Subscribe by our newsletter and get update protidin.</p>
                         </div>
                         <div class="form_sub">
                            <form>
@@ -49,9 +49,9 @@
       </footer>
       <!-- footer end -->
       <div class="cpy_">
-         <p class="mx-auto">&copy;<?php  echo date("Y"); ?>&nbsp; All Rights Reserved By <a href="https://html.design/">Meet Savaliya</a><br>
+         <p class="mx-auto">&copy;<?php  echo date("Y"); ?>&nbsp; All Rights Reserved By <b class="text-danger">Meet Savaliya</b><br>
          
-            Distributed By <a href="https://themewagon.com/" target="_blank">Meet Savaliya</a>
+            Distributed By <b class="text-danger">Meet Savaliya</b>
          
          </p>
       </div>

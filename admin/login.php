@@ -22,6 +22,21 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition login-page">
+
+<?php
+if(isset($_SESSION['pass'])) 
+{
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            '.$_SESSION['pass'].'
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="text-white">&times;</span>
+            </button>
+          </div>';
+    unset($_SESSION['pass']);
+}
+?>
+
+
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
@@ -50,7 +65,7 @@
         </div>
         <div class="row">
           <!-- /.col -->
-          <div class="col-4">
+          <div class="col-6 offset-3">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
@@ -62,6 +77,7 @@
   <!-- /.card -->
 </div>
 <!-- /.login-box -->
+
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>

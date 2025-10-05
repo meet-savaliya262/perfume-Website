@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="full">
-          <h3>Shopping Cart</h3>
+          <h3 class="text-white">Shopping Cart</h3>
           <nav aria-label="breadcrumb" class="text-center">
             <ol class="breadcrumb bg-transparent p-0 mt-2 justify-content-center">
               <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -44,34 +44,30 @@
                   $total += $total_price;
 
                   echo '<tr>
-                          <td class="pro_details">
-                            <img src="products_image/'.$val['img'].'" width="50" alt="Product">
-                            <h5>'.$val['nm'].'</h5>
-                          </td>
-                          <td>₹'.$val['price'].'</td>
-                          <td>
-                            <div class="input-group input-group-sm w-75">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary btn-sm qty-minus" type="button">−</button>
-                              </div>
-                              <input name="'.$id.'" type="text" min="1" value="'.$val['qty'].'">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-secondary btn-sm qty-plus" type="button">+</button>
-                              </div>
-                            </div>
-                          </td>
-                          <td>₹'.$total_price.'</td>
-                          <td>
-                            <a href="addtocart.php?rid='.$id.'" class="btn btn-danger btn-sm">x</a>
-                          </td>
-                        </tr> ';
+                    <td class="pro_details" data-label="Product">
+                      <img src="products_image/'.$val['img'].'" width="80" alt="Product"> <h5>'.$val['nm'].'</h5>
+                    </td>
+                    <td data-label="Price">₹'.$val['price'].'</td>
+                    <td data-label="Quantity">
+                      <div class="input-group input-group-sm w-100 justify-content-end"> <div class="input-group-prepend">
+                          <button class="btn btn-outline-secondary btn-sm qty-minus" type="button">−</button>
+                        </div>
+                        <input name="'.$id.'" type="text" min="1" value="'.$val['qty'].'" readonly>
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary btn-sm qty-plus" type="button">+</button>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Total">₹'.$total_price.'</td>
+                    <td data-label="Remove">
+                      <a href="addtocart.php?rid='.$id.'" class="btn btn-danger btn-sm">X</a>
+                    </td>
+                  </tr> ';
                 }
+              } else {
+                 echo '<tr><td colspan="5" class="text-center p-4">Your cart is currently empty.</td></tr>';
               }
-
             ?>
-            <!-- Sample Static Row -->
-            
-            <!-- More rows can go here -->
           </tbody>
         </table>
       
@@ -79,41 +75,48 @@
   </div>
 
   <div class="shoping_cart_btns d-flex justify-content-between flex-wrap">
-    <a href="products.php" class="btn btn-outline-secondary">Continue Shopping</a>
-    <button type="submit" class="btn btn-primary ubtn"><i class="fa-solid fa-spinner"></i>&nbsp;&nbsp;Update Cart</button>
-  </div>
+    <a href="products.php" class="btn text-white btn-da">Continue Shopping</a>
+    <button type="submit" class="btn btn-da text-white"><i class="fa-solid fa-sync-alt"></i>&nbsp;&nbsp;Update Cart</button> </div>
   </form>
 
   <div class="row mt-4">
     <div class="col-md-8">
-      <!-- Left side (optional) -->
-    </div>
+      </div>
     <div class="col-md-4">
       <div class="cart-summary">
         <h5>Summary</h5>
         <hr>
-        <p><strong>Subtotal:</strong>₹<?php echo $total; ?></p>
-        <p><strong>Total:</strong> ₹<?php echo $total; ?></p>
-        <a href="checkout.php" class="btn btn-primary btn-block checkbtn">Proceed to Checkout</a>
+        <p><span>Subtotal:</span><span>₹<?php echo number_format($total, 2); ?></span></p>
+        <p><span>Shipping:</span><span>Free</span></p>
+        <hr>
+        <p class="final-total"><span>Order Total:</span> <span>₹<?php echo number_format($total, 2); ?></span></p>
+        <a href="checkout.php" class="btn btn-primary btn-da checkbtn">Proceed to Checkout</a>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-  document.querySelectorAll('.qty-plus').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const input = this.closest('.input-group').querySelector('input');
-      input.value = parseInt(input.value) + 1;
-    });
-  });
 
-  document.querySelectorAll('.qty-minus').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const input = this.closest('.input-group').querySelector('input');
-      if (parseInt(input.value) > 1) {
-        input.value = parseInt(input.value) - 1;
-      }
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.qty-plus').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const input = this.closest('.input-group').querySelector('input');
+        // Check if the input is a number
+        let currentValue = parseInt(input.value) || 0;
+        input.value = currentValue + 1;
+      });
+    });
+
+    document.querySelectorAll('.qty-minus').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const input = this.closest('.input-group').querySelector('input');
+        // Check if the input is a number
+        let currentValue = parseInt(input.value) || 0;
+        if (currentValue > 1) {
+          input.value = currentValue - 1;
+        }
+      });
     });
   });
 </script>

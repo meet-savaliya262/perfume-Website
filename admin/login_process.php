@@ -27,14 +27,15 @@
             $row=mysqli_fetch_assoc($res);
             if(empty($row))
             {
-                echo "wrong unm or pass";
+                $_SESSION['pass']="Your username or password is wrong";
+                header("location:login.php");
             }
             else
             {
                 $_SESSION['admin']['email']=$row['a_email'];
                 $_SESSION['admin']['id']=$row['a_id'];
                 $_SESSION['admin']['status']=true;
-                 header("location:index.php");
+                header("location:index.php");
             }
         }
     }

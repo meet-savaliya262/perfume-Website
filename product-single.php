@@ -63,7 +63,7 @@ ob_end_flush();
             else 
             {
                 echo '<a href="wishlist_add.php?pid='.$pid.'" class="wishlist-link">
-                        <i class="fa-solid fa-heart" style="color:#555;"></i>
+                        <i class="fa-solid fa-heart" style="color:#gray;"></i>
                       </a>';
             }
           ?>
@@ -73,7 +73,7 @@ ob_end_flush();
        
 
       <p  style="font-weight:500;"><?php echo $row['p_short_desc']; ?></p>
-      <h4>Price:₹<?php echo $row['p_price']; ?></h4>
+      <h4 class="pro_price">Price:₹<?php echo $row['p_price']; ?></h4>
 
           
 
@@ -97,17 +97,17 @@ ob_end_flush();
             {
               echo '<form action="addtocart.php" method="post">
                     <div class="quantity-box">
-                      <button class="btn btn-secondary btn-minus" type="button"><b>-</b></button>
-                      <input type="text" name="qty" class="form-control qty-input" value="1">
-                      <button class="btn btn-secondary btn-plus" type="button"><b>+</b></button>
+                      <button class="btn btn-minus" type="button"><b>-</b></button>
+                      <input type="text" name="qty" class="qty-input" value="1" readonly>
+                      <button class="btn btn-plus" type="button"><b>+</b></button>
                     </div>';
               echo '<input type="hidden" name="pid" value="'.$p_id.'">';
-              echo '<button type="submit" class="btn btn-primary xyz"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp;Add to cart</button>
+              echo '<button type="submit" class="xyz"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
                </form>';
             }
             else
             {
-                echo '<span class="btn btn-warning">Item Alredy in cart</span';
+                echo '<span class="proincart">Item Alredy in cart</span>';
             }
           ?>
        

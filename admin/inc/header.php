@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="shortcut icon" href="../images/plogo.png" type="">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -123,7 +125,7 @@
               <li class="nav-item">
                 <a href="hero_section.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Hero section Product</p>
+                  <p>Add Hero Product</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -173,14 +175,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Widgets
-              </p>
-            </a>
-          </li>
+         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

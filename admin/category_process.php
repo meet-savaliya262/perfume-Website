@@ -34,7 +34,7 @@
         else
         {
             include("../include_files/config.php");
-            $t = time(); 
+            $t = date("Y-m-d");
             $cimg_nm=$t."_".$_FILES['cimg']['name'];
             move_uploaded_file($_FILES['cimg']['tmp_name'],"../category_image/".$cimg_nm);
             $q="insert into category(cat_nm,cat_time,cat_img)values('".$cnm."','".$t."','".$cimg_nm."')";
@@ -44,7 +44,7 @@
         }
     }
     else{
-        header("location:caterory.php");
+        header("location:category.php");
     }
 
 ?>

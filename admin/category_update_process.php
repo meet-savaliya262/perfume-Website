@@ -43,7 +43,7 @@
                 $f_res=mysqli_query($link,$f_q);
                 $f_row=mysqli_fetch_assoc($f_res);
                 unlink("../category_image/".$f_row['cat_img']);
-                $img=time()."_".$_FILES['cimg']['name'];
+                $img=date("Y-m-d")."_".$_FILES['cimg']['name'];
                 move_uploaded_file($_FILES['cimg']['tmp_name'],"../category_image/".$img);
 
                 $q = "UPDATE category SET 
@@ -64,7 +64,7 @@
         }
     }
     else{
-        header("location:caterory.php");
+        header("location:category.php");
     }
 
 ?>

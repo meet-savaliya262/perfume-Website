@@ -23,6 +23,7 @@
             $row=mysqli_fetch_assoc($res);
             if(empty($row))
             {
+                $_SESSION['wrongpass']="Your username or password is wrong";
                 header("location:login.php");
             }
             else

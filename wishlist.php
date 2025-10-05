@@ -17,7 +17,7 @@
       <div class="row">
          <div class="col-md-12">
             <div class="full">
-               <h3>Your Wishlist</h3>
+               <h3 class="text-white">Your Wishlist</h3>
                 <nav aria-label="breadcrumb" class="text-center">
                   <ol class="breadcrumb bg-transparent p-0 mt-2 justify-content-center">
                       <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -59,7 +59,7 @@
 
             echo '<div class="product-info text-center">';
             echo '<h5>'.$row['p_nm'].'</h5>';
-            echo '<h6 class="price">$'.$row['p_price'].'</h6>';
+            echo '<h6 class="price">₹'.$row['p_price'].'</h6>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -72,15 +72,19 @@
     } 
     else 
     {
-        echo '<div class="wishlist-empty text-center p-5">
-                <i class="fa-solid fa-heart-crack icon"></i>
-                <h3>Your Wishlist is Empty</h3>
-                <p class="text-muted">Looks like you have not added anything yet.<br>
-                    Explore our products and save your favorites!</p>
-                <a href="products.php" class="btn browse-btn mt-3">
-                    <i class="fa-solid fa-shop"></i> Browse Products
-                </a>
-            </div>';
+        echo '<div class="container">
+                <div class="card">
+                    <div class="wishlist-empty text-center p-5 ">
+                        <i class="fa-solid fa-heart-crack icon"></i>
+                        <h3>Your Wishlist is Empty</h3>
+                        <p class="text-muted">Looks like you have not added anything yet.<br>
+                            Explore our products and save your favorites!</p>
+                        <a href="products.php" class="btn browse-btn mt-3">
+                            <i class="fa-solid fa-shop"></i> Browse Products
+                        </a>
+                    </div>
+                </div>
+             </div>';
     }
 ?>
 

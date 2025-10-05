@@ -1,4 +1,10 @@
 <?php 
+include("include_files/config.php");
+if (!isset($_GET['s']) || empty($_GET['s'])) 
+{
+  header("location:products.php");
+  exit;
+}
 include("include_files/header.php");
 ?>
 
@@ -7,7 +13,7 @@ include("include_files/header.php");
       <div class="row">
          <div class="col-md-12">
             <div class="full">
-               <h3>Search</h3>
+               <h3 class="text-white">Search</h3>
                 <nav aria-label="breadcrumb" class="text-center">
                   <ol class="breadcrumb bg-transparent p-0 mt-2 justify-content-center">
                       <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -32,7 +38,6 @@ include("include_files/header.php");
 
     <div class="row">
       <?php
-
         $s=$_GET['s'];
         $q = "SELECT * FROM products where p_nm LIKE '%".$s."%' AND p_status=1";
         
@@ -40,7 +45,19 @@ include("include_files/header.php");
 
         if (mysqli_num_rows($res) <= 0) 
         {
-          echo "<div class='col-12 text-center'><p><h3>No products found...</h3></p></div>";
+          echo '<div class="container">
+                  <div class="card">
+                    <div class="wishlist-empty text-center p-5 ">
+                        <i class="fa-solid fa-heart-crack icon"></i>
+                        <h3>Sorry! This product is not available</h3>
+                        <p class="text-muted">Looks like this product is not available.<br>
+                            Explore our products and save your favorites!</p>
+                        <a href="products.php" class="btn browse-btn mt-3">
+                            <i class="fa-solid fa-shop"></i> Browse Products
+                        </a>
+                    </div>
+                  </div>
+                </div>';
         } 
         else 
         {

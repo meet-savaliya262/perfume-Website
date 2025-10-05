@@ -62,7 +62,7 @@ if (!empty($_POST)) {
             $f_res=mysqli_query($link,$f_q);
             $f_row=mysqli_fetch_assoc($f_res);
             unlink("../products_image/".$f_row['p_img']);
-            $img=time()."_".$_FILES['pimg']['name'];
+            $img=date("Y-m-d")."_".$_FILES['pimg']['name'];
             move_uploaded_file($_FILES['pimg']['tmp_name'],"../products_image/".$img);
 
             $q = "UPDATE products SET 

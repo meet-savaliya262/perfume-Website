@@ -1,10 +1,18 @@
 <?php 
-    include("inc/header.php");
+    include("../include_files/config.php");
     $pid=$_GET['pid'];
+    if (!isset($_GET['pid']) || empty($_GET['pid'])) 
+    {
+      header("location:product.php");
+      \exit;
+    }
+
     $p_q="select * from products where p_id=".$pid;
     $p_res=mysqli_query($link,$p_q);
     $p_row=mysqli_fetch_assoc($p_res);
     extract($p_row);
+    
+    include("inc/header.php");
 
 ?>
 

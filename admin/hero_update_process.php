@@ -43,7 +43,7 @@
                 $f_res=mysqli_query($link,$f_q);
                 $f_row=mysqli_fetch_assoc($f_res);
                 unlink("../hero_product_image/".$f_row['h_img']);
-                $img=date('y-m-d')."_".$_FILES['himg']['name'];
+                $img=date("Y-m-d")."_".$_FILES['himg']['name'];
                 move_uploaded_file($_FILES['himg']['tmp_name'],"../hero_product_image/".$img);
 
                 $q = "UPDATE hero SET 
@@ -64,7 +64,7 @@
         }
     }
     else{
-        header("location:caterory.php");
+        header("location:hero_section.php");
     }
 
 ?>

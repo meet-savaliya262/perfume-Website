@@ -28,7 +28,7 @@
         else
         {
             include("../include_files/config.php");
-            $t = date("Y-m-d"); 
+            $t = date("Y-m-d");
             $limg_nm=$t."_".$_FILES['limg']['name'];
             move_uploaded_file($_FILES['limg']['tmp_name'],"../products_image/latest_product_img/".$limg_nm);
             $q="insert into latest_product(l_nm,l_description,l_time,l_img)

@@ -22,7 +22,6 @@
         } 
         else 
         {
-            // Insert into wishlist table
             $t = date("Y-m-d H:i:s"); 
 
             $insert_q = mysqli_query($link, "INSERT INTO wishlist (w_uid, w_pid,w_time) VALUES ('.$user_id.', '.$product_id.','.$t.')");
@@ -31,7 +30,19 @@
         }
     } 
     else 
-    {
-        echo "Product not found.";
+    {   
+       echo '<div class="container">
+                <div class="card">
+                    <div class="wishlist-empty text-center p-5 ">
+                        <i class="fa-solid fa-heart-crack icon"></i>
+                        <h3>Your Wishlist is Empty</h3>
+                        <p class="text-muted">Looks like you have not added anything yet.<br>
+                            Explore our products and save your favorites!</p>
+                        <a href="products.php" class="btn browse-btn mt-3">
+                            <i class="fa-solid fa-shop"></i> Browse Products
+                        </a>
+                    </div>
+                </div>
+             </div>';
     }
 ?>

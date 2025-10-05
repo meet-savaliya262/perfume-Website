@@ -16,7 +16,7 @@ $res = mysqli_query($link, $q);
    <div class="container-fluid"> 
       <div class="row">
          <div class="col-md-12 text-center">
-            <h3>My Orders</h3>
+            <h3 class="text-white">My Orders</h3>
             <ol class="breadcrumb bg-transparent p-0 mt-2 justify-content-center">
                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                 <li class="breadcrumb-item active">My Orders</li>

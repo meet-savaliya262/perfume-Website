@@ -1,4 +1,4 @@
-<?php
+<?php  session_start();
         if(!empty($_POST))
         {
             extract($_POST);
@@ -19,16 +19,17 @@
             {
                 foreach($error as $er)
                 {
-                    echo $er."<br />";
+                    $_SESSION['status'] = "error";
+                    header("location:contact.php");
                 }
             }
             else
             {
                include("include_files/config.php");
-               $t = date("Y-m-d H:i:s"); 
+               $t = date("Y-m-d"); 
                $q="insert into contact(co_fnm,co_email,co_msg,co_time)values('".$fnm."','".$email."','".$msg."','".$t."')";
                mysqli_query($link,$q);
-               echo "Done! massage sent succesfullys";
+               $_SESSION['status'] = "success";
                header("location:contact.php");
             }
         }      

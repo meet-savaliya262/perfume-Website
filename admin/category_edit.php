@@ -1,14 +1,26 @@
-<?php 
-    include("inc/header.php");
-    $cid=$_GET['cid'];
-    $c_q="select * from category where cat_id=".$cid;
-    $c_res=mysqli_query($link,$c_q);
-    $c_row=mysqli_fetch_assoc($c_res);
+<?php
+    include("../include_files/config.php");
+
+    if (!isset($_GET['cid']) || empty($_GET['cid'])) 
+    {
+      header("location:category.php");
+       exit;
+    }
+    
+    $cid = (int)$_GET['cid']; 
+    $c_q = "SELECT * FROM category WHERE cat_id = $cid";
+    $c_res = mysqli_query($link, $c_q);
+    
+    if (!$c_res || mysqli_num_rows($c_res) == 0) {
+      echo "<p style='color:red; text-align:center;'>Sorry! Category not found!</p>";
+      exit;
+    }
+    
+    $c_row = mysqli_fetch_assoc($c_res);
     extract($c_row);
-
+    
+    include("inc/header.php");
 ?>
-
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

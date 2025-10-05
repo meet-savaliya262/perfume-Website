@@ -7,7 +7,7 @@
       <div class="row">
          <div class="col-md-12">
             <div class="full">
-               <h3>Products</h3>
+               <h3 class="text-white">Products</h3>
                <nav aria-label="breadcrumb" class="text-center">
                   <ol class="breadcrumb bg-transparent p-0 mt-2 justify-content-center">
                      <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -30,102 +30,129 @@
     <div class="row">
       <!-- FILTERS - LEFT SIDE -->
       <div class="col-lg-3 mb-4">
-        <button class="toggle-filter-btn btn btn-dark d-lg-none mb-3"><i class="fa-solid fa-filter"></i>&nbsp;&nbsp;Show Filters</button>
-        <div class="filter-box p-3 border rounded shadow-sm bg-light">
-          <h5 class="mb-3 filter">Filter By</h5>
+    <!-- Toggle Filter Button -->
+    <button class="toggle-filter-btn btn filter-btn mb-3">
+        <i class="fa-solid fa-filter"></i> Show Filters
+    </button>
 
-          <!-- All filters -->
-          <form method="GET" action="products.php">
-            
+    <!-- Filter Box -->
+    <div class="filter-box p-3 border rounded shadow-sm bg-light">
+        <h5 class="mb-3"><i class="fa-solid fa-filter"></i> Filter By</h5>
+
+        <form method="GET" action="products.php">
+
             <!-- Category Filter -->
-            <div class="mb-4">
-              <h6>Category</h6>
-              <select name="cid" class="form-control">
-                <option value="">-- Select Category --</option>
+            <div class="filter-section mb-4">
+                <h6>Category</h6>
                 <?php
-                $cat_q="SELECT * FROM category WHERE cat_status=1";
-                $cat_res=mysqli_query($link,$cat_q);
-                while($cat_row=mysqli_fetch_assoc($cat_res)) {
-                    $selected = (isset($_GET['cid']) && $_GET['cid'] == $cat_row['cat_id']) ? "selected" : "";
-                    echo '<option value="'.$cat_row['cat_id'].'" '.$selected.'>'.$cat_row['cat_nm'].'</option>';
+                $catQuery = "SELECT * FROM category WHERE cat_status=1";
+                $catResult = mysqli_query($link, $catQuery);
+
+                while ($cat = mysqli_fetch_assoc($catResult)) {
+                    $checked = (isset($_GET['cid']) && in_array($cat['cat_id'], $_GET['cid'])) ? "checked" : "";
+                    echo '<div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="cid[]" value="' . $cat['cat_id'] . '" ' . $checked . '>
+                            <label class="form-check-label">' . $cat['cat_nm'] . '</label>
+                          </div>';
                 }
                 ?>
-              </select>
             </div>
 
             <!-- Price Filter -->
-            <div class="mb-4">
-              <h6>Price</h6>
-              <div class="d-flex mb-2">
-                <input type="number" name="min_price" value="<?php echo isset($_GET['min_price']) ? $_GET['min_price'] : ''; ?>" placeholder="Min" min="1" class="form-control form-control-sm me-2">
-                <input type="number" name="max_price" value="<?php echo isset($_GET['max_price']) ? $_GET['max_price'] : ''; ?>" placeholder="Max" min="1" class="form-control form-control-sm">
-              </div>
+            <div class="filter-section mb-4">
+                <h6>Price</h6>
+                <div class="d-flex gap-2">
+                    <input type="number" name="min_price" value="<?php echo isset($_GET['min_price']) ? $_GET['min_price'] : ''; ?>" placeholder="Min" min="1" class="form-control form-control-sm">
+                    <input type="number" name="max_price" value="<?php echo isset($_GET['max_price']) ? $_GET['max_price'] : ''; ?>" placeholder="Max" min="1" class="form-control form-control-sm">
+                </div>
             </div>
 
             <!-- Flavor Filter -->
-            <div class="mb-4">
-              <h6>Flavor</h6>
-              <select name="fid" class="form-control">
-                <option value="">-- Select Flavor --</option>
+            <div class="filter-section mb-4">
+                <h6>Flavor</h6>
                 <?php
-                $f_q="SELECT DISTINCT p_flavor FROM products WHERE p_status=1";
-                $f_res=mysqli_query($link,$f_q);
-                while($f_row=mysqli_fetch_assoc($f_res)) {
-                    $selected = (isset($_GET['fid']) && $_GET['fid'] == $f_row['p_flavor']) ? "selected" : "";
-                    echo '<option value="'.$f_row['p_flavor'].'" '.$selected.'>'.$f_row['p_flavor'].'</option>';
+                $flavorQuery = "SELECT DISTINCT p_flavor FROM products WHERE p_status=1";
+                $flavorResult = mysqli_query($link, $flavorQuery);
+
+                while ($flavor = mysqli_fetch_assoc($flavorResult)) {
+                    $checked = (isset($_GET['fid']) && in_array($flavor['p_flavor'], $_GET['fid'])) ? "checked" : "";
+                    echo '<div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="fid[]" value="' . $flavor['p_flavor'] . '" ' . $checked . '>
+                            <label class="form-check-label">' . $flavor['p_flavor'] . '</label>
+                          </div>';
                 }
                 ?>
-              </select>
             </div>
 
-            <button type="submit" class="btn btn-sm btn-dark w-100">Apply</button>
-          </form>
-        </div>
-      </div>
+            <button type="submit" class="btn btn-dark w-100">Apply Filters</button>
+        </form>
+    </div>
+</div>
 
-      <!-- PRODUCTS - RIGHT SIDE -->
+
       <div class="col-lg-9">
         <div class="row">
 
           <?php
-            // build dynamic WHERE
             $where = "p_status=1";
 
-            if (!empty($_GET['cid'])) {
-              $cid = (int) $_GET['cid'];
-              $where .= " AND p_cat=$cid";
+            if (!empty($_GET['cid'])) 
+            {
+              $cids = array_map('intval', $_GET['cid']);
+              $cid_str = implode(",", $cids);
+              $where .= " AND p_cat IN ($cid_str)";
             }
 
-            if (!empty($_GET['fid'])) {
-              $fid = mysqli_real_escape_string($link,$_GET['fid']);
-              $where .= " AND p_flavor='$fid'";
+            if (!empty($_GET['fid'])) 
+            {
+              $flavors = array_map(function($f) use ($link) 
+              {
+                  return "'" . mysqli_real_escape_string($link, $f) . "'";
+              }, $_GET['fid']);
+              $fid_str = implode(",", $flavors);
+              $where .= " AND p_flavor IN ($fid_str)";
             }
 
-            if (!empty($_GET['min_price']) && !empty($_GET['max_price'])) {
+            if (!empty($_GET['min_price']) && !empty($_GET['max_price'])) 
+            {
               $min = (int) $_GET['min_price'];
               $max = (int) $_GET['max_price'];
               $where .= " AND p_price BETWEEN $min AND $max";
             }
 
-            // total items
             $t_q="SELECT COUNT(*) as total FROM products WHERE $where";
             $t_res=mysqli_query($link,$t_q);
             $t_row=mysqli_fetch_assoc($t_res);
             $total_item=$t_row['total'];
 
-            $cur_page= (isset($_GET['page'])? $_GET['page'] : 1);
-            $page_per_item=6;
+            $cur_page= (isset($_GET['page'])? (int)$_GET['page'] : 1);
+            $page_per_item=9;
             $total_page = ($total_item>0)? ceil($total_item/$page_per_item):1;
             $start_pos = ($cur_page - 1) * $page_per_item;
 
-            // fetch products
             $q = "SELECT * FROM products WHERE $where LIMIT $start_pos,$page_per_item";
             $res = mysqli_query($link,$q);
 
-            if (mysqli_num_rows($res) <= 0) {
-              echo "<div class='col-12 text-center'><p>No products found.</p></div>";
-            } else {
-              while ($row = mysqli_fetch_assoc($res)) {
+            if (mysqli_num_rows($res) <= 0) 
+            {
+                  echo '<div class="container">
+                          <div class="card">
+                              <div class="wishlist-empty text-center p-5 ">
+                                  <i class="fa-solid fa-heart-crack icon"></i>
+                                  <h3>Sorry! This product is not available</h3>
+                                  <p class="text-muted">Looks like this product is not available.<br>
+                                      Explore our products and save your favorites!</p>
+                                  <a href="products.php" class="btn browse-btn mt-3">
+                                      <i class="fa-solid fa-shop"></i> Browse Products
+                                  </a>
+                              </div>
+                          </div>
+                      </div>';
+            } 
+            else 
+            {
+              while ($row = mysqli_fetch_assoc($res)) 
+              {
                 echo '<div class="col-6 col-sm-6 col-md-4 col-xl-4 mb-4">';
                 echo '<div class="product-card">';
                 echo '<a href="product-single.php?pid='.$row['p_id'].'" class="image-wrapper">
@@ -142,7 +169,8 @@
           ?>
         </div>
 
-           <!-- pagination -->
+ <!-- pagination -->
+      <?php if ($total_item > $page_per_item) { ?>
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
@@ -154,11 +182,11 @@
                   if(isset($_GET['cid']))
                   {
                     echo '<a href="products.php?cid='.$_GET['cid'].'
-                          &page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
+                          &page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i> Previous</a>';
                   }
                   else
                   {
-                    echo '<a href="products.php?page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i></a>';
+                    echo '<a href="products.php?page='.($cur_page - 1).'"><i class="fas fa-angle-left"></i> Previous</a>';
                   }
                 }
               ?>
@@ -186,11 +214,11 @@
                   if(isset($_GET['cid']))
                   {
                     echo '<a href="products.php?cid='.$_GET['cid'].'
-                          &page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
+                          &page='.($cur_page + 1).'"> Next <i class="fas fa-angle-right"></i></a>';
                   }
                   else
                   {
-                    echo '<a href="products.php?page='.($cur_page + 1).'"><i class="fas fa-angle-right"></i></a>';
+                    echo '<a href="products.php?page='.($cur_page + 1).'">Next <i class="fas fa-angle-right"></i></a>';
                   }
                 }
               ?>
@@ -198,8 +226,7 @@
             </div>
           </div>
         </div>
-
-
+      <?php } ?>
       </div>
     </div>
   </div>
@@ -212,9 +239,13 @@
 
     toggleBtn.addEventListener("click", function () {
       filterBox.classList.toggle("active");
-      toggleBtn.textContent = filterBox.classList.contains("active")
-        ? "Hide Filters"
-        : "Show Filters";
+      toggleBtn.classList.toggle("active");
+
+      if (filterBox.classList.contains("active")) {
+        toggleBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Hide Filters';
+      } else {
+        toggleBtn.innerHTML = '<i class="fa-solid fa-filter"></i>&nbsp;&nbsp;Show Filters';
+      }
     });
   });
 </script>
@@ -222,3 +253,4 @@
 <?php 
 include("include_files/footer.php");
 ?>
+```

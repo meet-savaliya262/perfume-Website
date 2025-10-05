@@ -1,11 +1,19 @@
 <?php 
-    include("inc/header.php");
-    $pid=$_GET['pid'];
-    $h_q="select * from hero where h_id=".$pid;
-    $h_res=mysqli_query($link,$h_q);
-    $h_row=mysqli_fetch_assoc($h_res);
-    extract($h_row);
+include("../include_files/config.php");
 
+if (!isset($_GET['pid']) || empty($_GET['pid'])) 
+{
+  header("location:hero_section.php");
+    exit;
+}
+    
+$pid=$_GET['pid'];
+$h_q="select * from hero where h_id=".$pid;
+$h_res=mysqli_query($link,$h_q);
+$h_row=mysqli_fetch_assoc($h_res);
+extract($h_row);
+
+include("inc/header.php");
 ?>
 
 

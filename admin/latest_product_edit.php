@@ -1,12 +1,19 @@
 <?php 
-    include("inc/header.php");
     include("../include_files/config.php");
+    if (!isset($_GET['lid']) || empty($_GET['lid'])) 
+    {
+      header("location:latest_product.php");
+       exit;
+    }
+    
+
     $lid=$_GET['lid'];
     $l_q="select * from latest_product where l_id=".$lid;
     $l_res=mysqli_query($link,$l_q);
     $l_row=mysqli_fetch_assoc($l_res);
     extract($l_row);
-
+    
+    include("inc/header.php");
 ?>
 
   <!-- Content Wrapper. Contains page content -->
