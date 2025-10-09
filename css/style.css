@@ -1644,28 +1644,66 @@ form input[type="submit"]:focus {
 
 /* end search overlay */
 
-/* pagination of products page */
+/* pagination css */
 .pageination {
   display: flex;
   justify-content: center;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Pagination Links */
 .pageination a {
-  padding: 6px 12px;
+  padding: 8px 16px;
   text-decoration: none;
-  background-color: #eee;
-  color: #333;
+  background-color: #fff; /* dark background */
+  color: #f7444e; /* red text */
   font-weight: 600;
-  border-radius: 4px;
+  border-radius: 50px; /* pill shape */
   font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 1px solid #f7444e;
 }
-@media (min-width: 992px) {
-   .pageination{
-    justify-content: center; /* desktop પર પણ center */
+
+/* Hover Effect */
+.pageination a:hover {
+  background-color: #f7444e; /* red background on hover */
+  color: #f6f4f4; /* dark text */
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Active Page */
+.pageination a.active {
+  background-color: #f7444e;
+  color: #fefefe;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transform: scale(1.1);
+}
+
+/* Icon spacing */
+.pageination a i {
+  margin: 0 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pageination a {
+    padding: 6px 12px;
+    font-size: 14px;
   }
 }
+
+@media (max-width: 480px) {
+  .pageination a {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+}
+
 
 /* Custom Logout Dropdown Style */
 .logout-btn {

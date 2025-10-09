@@ -56,6 +56,9 @@ if (!empty($_POST)) {
     else
     {
         include("../include_files/config.php");
+        $sdesc  = mysqli_real_escape_string($link, $sdesc);
+        $desc   = mysqli_real_escape_string($link, $desc);
+        $ainfo  = mysqli_real_escape_string($link, $ainfo);
         if(!empty($_FILES['pimg']['name']))
         {
             $f_q="select p_img from products where p_id=".$pid;

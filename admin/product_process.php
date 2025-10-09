@@ -62,6 +62,9 @@
             $t = date("Y-m-d");
             $pimg_nm=$t."_".$_FILES['pimg']['name'];
             move_uploaded_file($_FILES['pimg']['tmp_name'],"../products_image/".$pimg_nm);
+            $sdesc = mysqli_real_escape_string($link, $sdesc);
+            $desc = mysqli_real_escape_string($link, $desc);
+            $ainfo = mysqli_real_escape_string($link, $ainfo);
             $q="insert into products(p_nm,p_cat,p_flavor,p_price,p_weight,p_short_desc,p_description,p_add_info,p_time,p_img)
                 values('".$pnm."','".$cnm."','".$flavor."','".$price."','".$weight."','".$sdesc."','".$desc."','".$ainfo."','".$t."','".$pimg_nm."')";
             mysqli_query($link,$q);
