@@ -167,10 +167,12 @@
               }
             }
           ?>
-        </div>
+      </div>
 
  <!-- pagination -->
-    <?php if ($total_item > $page_per_item) { ?>
+<?php if ($total_item > $page_per_item) 
+  { 
+?>
 <div class="container mt-5">
   <div class="row">
     <div class="col-lg-12">
@@ -178,11 +180,12 @@
 
       <!-- Previous Button -->
       <?php 
-        if($cur_page > 1) {
+        if($cur_page > 1) 
+        {
           $prev_page = $cur_page - 1;
           $prev_link = isset($_GET['cid']) 
-                       ? 'index.php?cid='.$_GET['cid'].'&page='.$prev_page 
-                       : 'index.php?page='.$prev_page;
+                       ? 'products.php?cid='.$_GET['cid'].'&page='.$prev_page 
+                       : 'products.php?page='.$prev_page;
           echo '<a href="'.$prev_link.'"><i class="fas fa-angle-left"></i> Previous</a>';
         }
       ?>
@@ -192,9 +195,9 @@
         for($i = 1; $i <= $total_page; $i++) {
             $active = ($i == $cur_page) ? 'active' : '';
             if(isset($_GET['cid'])) {
-                echo '<a class="'.$active.'" href="index.php?cid='.$_GET['cid'].'&page='.$i.'">'.$i.'</a>';
+                echo '<a class="'.$active.'" href="products.php?cid='.$_GET['cid'].'&page='.$i.'">'.$i.'</a>';
             } else {
-                echo '<a class="'.$active.'" href="index.php?page='.$i.'">'.$i.'</a>';
+                echo '<a class="'.$active.'" href="products.php?page='.$i.'">'.$i.'</a>';
             }
         }
       ?>
@@ -204,8 +207,8 @@
         if($cur_page < $total_page) {
           $next_page = $cur_page + 1;
           $next_link = isset($_GET['cid']) 
-                       ? 'index.php?cid='.$_GET['cid'].'&page='.$next_page 
-                       : 'index.php?page='.$next_page;
+                       ? 'products.php?cid='.$_GET['cid'].'&page='.$next_page 
+                       : 'products.php?page='.$next_page;
           echo '<a href="'.$next_link.'">Next <i class="fas fa-angle-right"></i></a>';
         }
       ?>

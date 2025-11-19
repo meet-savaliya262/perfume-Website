@@ -112,11 +112,11 @@ $res = mysqli_query($link, $q);
         </div>
       </div>
 
-      <div class="order-summary mt-3 p-3 border rounded bg-light">
+      <!-- <div class="order-summary mt-3 p-3 border rounded bg-light">
          <h6 class="fw-bold mb-2">Order Summary</h6>
          <p class="mb-1"><b>Items:</b> <?php echo count($pids); ?></p>
          <p class="mb-0"><b>Total:</b> <strong>₹<?php echo $total; ?></strong></p>
-      </div>
+      </div> -->
 
       <div class="order-footer text-center mt-3">
          <a href="products.php" class="btn btn-attractive">Continue Shopping</a>

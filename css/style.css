@@ -1558,12 +1558,12 @@ form input[type="submit"]:focus {
 .search-container input {
   flex: 1;
   height: 50px;
-  background: transparent !important;
+  color: #000 !important;
+  background: rgba(255, 255, 255, 0.85) !important;
   border: 1px solid #000;
   border-radius: 30px;
   outline: none;
   font-size: 25px;
-  color: #0f0e0e;
   padding: 0 15px;
   line-height: 50px;
   transition: 0.3s;
@@ -1572,17 +1572,18 @@ form input[type="submit"]:focus {
 
 .search-container input::after{
   background: transparent;
+  color:#000;
 }
 .search-container input:focus {
-  background: transparent !important;
+  background: rgba(255, 255, 255, 1) !important;
+  color: #000 !important;
   border-color: #ff416c;
   box-shadow: 0 0 10px 8px rgba(255, 65, 108, 0.5);
 }
 
 .search-container input::placeholder {
-  color: #0c0c0c;
+  color: #555 !important;
 }
-
 
 .search-container button {
   background: linear-gradient(to right, #ff416c, #ff4b2b);

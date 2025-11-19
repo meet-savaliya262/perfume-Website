@@ -18,30 +18,21 @@
                      <div class="widget_menu">
                         <h3 class="text-white"><i class="fa fa-star"></i>   Account</h3>
                         <ul>
-                           <li><a href="#">Account</a></li>
-                           <li><a href="#">Login</a></li>
-                           <li><a href="#">Register</a></li>
-                           <li><a href="#">Shopping</a></li>
-                           <li><a href="#">About as</a></li>
+                           <li><a href="account_order.php">Account</a></li>
+                           <li><a href="login.php">Login</a></li>
+                           <li><a href="login.php">Register</a></li>
+                           <li><a href="products.php">Shopping</a></li>
+                         
                         </ul>
                      </div>
                </div>
                <div class="col-md-5">
                      <div class="widget_menu">
-                        <h3 class="text-white"><i class="fa fa-star"></i>   Newsletter</h3>
-                        <div class="information_f">
-                          <p class="text-white">Subscribe by our newsletter and get update protidin.</p>
-                        </div>
-                        <div class="form_sub">
-                           <form>
-                              <fieldset>
-                                 <div class="field">
-                                    <input type="email" placeholder="Enter Your Mail" name="email" />
-                                    <input type="submit" value="Subscribe" />
-                                 </div>
-                              </fieldset>
-                           </form>
-                        </div>
+                        <h3 class="text-white"><i class="fa fa-star"></i>   Support</h3>
+                           <ul>
+                              <li><a href="about.php">About as</a></li>
+                              <li><a href="contact.php">Contact as</a></li>
+                           </ul>
                      </div>
                </div>
             </div>

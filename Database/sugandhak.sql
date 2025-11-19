@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2025 at 04:40 PM
+-- Generation Time: Nov 07, 2025 at 04:39 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -66,7 +66,8 @@ INSERT INTO `category` (`cat_id`, `cat_nm`, `cat_img`, `cat_time`, `cat_status`)
 (3, 'For Unisex', '2025-09-24_product12.png', '2025-09-24', 1),
 (4, 'Gift Sets', '2025-09-24_product7.png', '2025-09-24', 1),
 (5, 'Attar', '2025-10-06_attar1.png', '2025-10-06', 1),
-(6, 'Body Spray', '2025-10-09_bodyspray1.png', '2025-10-09', 1);
+(6, 'Body Spray', '2025-10-09_bodyspray1.png', '2025-10-09', 1),
+(7, 'Room Spray', '2025-11-06_room_spray1.png', '2025-11-06', 1);
 
 -- --------------------------------------------------------
 
@@ -238,7 +239,14 @@ INSERT INTO `products` (`p_id`, `p_cat`, `p_nm`, `p_price`, `p_img`, `p_short_de
 (51, '6', 'Blanc', 349, '2025-10-09_bodyspray3.png', 'A clean, fresh, and light body spray for daily use. Features a serene blend of Lavender, Neroli, and Musk for an effortlessly elegant scent.', '150ml', 'The SUGANDHAK BLANC Body Spray is the essence of pure freshness. It opens with the soothing clarity of Lavender, immediately setting a calm and refreshing tone. This is beautifully complemented by the bright, slightly honeyed Neroli in the middle, adding an elegant, sunny touch. The scent is grounded by a classic, clean Musk base, leaving a soft, powdery trail that is perfect for professional settings or casual day wear. \'BLANC\' is designed for those who prefer a light, crisp, and beautifully simple fragrance.', 'Brand: SUGANDHAK PERFUME\r\n\r\nScent Name: BLANC (Meaning: White/Clean)\r\n\r\nIdeal For: Men and Women (Truly Unisex)\r\n\r\nScent Profile: Clean, Floral, and Musky\r\n\r\nUse: Daily Wear / Office\r\n\r\nBottle Color: Crisp White (As pictured)', 'Sweet', '2025-10-09', 1),
 (52, '6', 'Aqua', 349, '2025-10-09_bodyspray4.png', 'A fresh, energizing, and aquatic body spray for an instantly refreshing feel. It features a cool blend of Bergamot, Marine, and Amber perfect for everyday vitality.', '150ml', 'The SUGANDHAK AQUA Body Spray is like a refreshing splash of ocean air. It kicks off with the sharp, sunny burst of Bergamot, instantly awakening your senses. This is quickly followed by the cool, invigorating Marine heart, giving you that \'just out of the shower\' clean feeling. The scent smoothly finishes with a touch of warm Amber, providing a lasting, comforting foundation. \'AQUA\' is the ideal scent for active days, hot weather, or anyone who loves a light, crisp, and clean fragrance that keeps you feeling fresh all day.', 'Brand: SUGANDHAK PERFUME\r\n\r\nScent Name: AQUA\r\n\r\nIdeal For: Men\r\n\r\nScent Profile: Fresh, Aquatic, and Citrusy\r\n\r\nUse: Daily Wear / Gym / Summer\r\n\r\nBottle Color: Deep Charcoal Gray/Black with a Blue Label \r\n', 'Spicy', '2025-10-09', 1),
 (53, '6', 'ORIENTAL SPICE', 399, '2025-10-09_bodyspray5.png', 'A bold, spicy, and warm body spray. It features a rich, exotic blend of Black Pepper, Leather, and Amberwood for a deeply masculine and unforgettable scent.', '150ml', 'The SUGANDHAK ORIENTAL SPICE Body Spray is a captivating journey for the senses. It commands attention from the start with a vibrant hit of Black Pepper. This intense opening gives way to a sophisticated, rugged heart of Leather and Coriander, creating a distinguished and masculine aroma. The fragrance settles into the luxurious warmth of Amberwood, ensuring the scent is both rich and enduring. This spray is perfect for men who seek an exotic, long-lasting, and intense fragrance for special occasions or when making a powerful statement.', 'Brand: SUGANDHAK PERFUME\r\n\r\nScent Name: ORIENTAL SPICE\r\n\r\nIdeal For: Men\r\n\r\nScent Profile: herbal and Leathery\r\n\r\nUse: Evening Wear / Special Occasions\r\n\r\nBottle Color: Classic Black ', 'Herbal', '2025-10-09', 1),
-(54, '6', 'OCEAN BREEZE', 399, '2025-10-09_bodyspray6.png', 'An invigorating, marine, and fresh body spray. It captures the spirit of the open sea with notes of Sea Salt, Blue Cypress, and Ambergris for dynamic freshness.', '150ml', 'The SUGANDHAK OCEAN BREEZE Body Spray is an instant escape to the coast. It launches with a vibrant, salty splash from the Sea Salt and Grapefruit, giving you an immediate feeling of energy and cleanliness. The heart dives into the cool depth of the ocean with Aquatic Accord and a refreshing touch of Blue Cypress. Finally, the scent settles into a refined, long-lasting trail of Cedarwood and Ambergris, adding a sensual warmth that balances the extreme freshness. This spray is perfect for men who love powerful, fresh, and modern aquatic scents, making it ideal for daily wear or warmer weather.', 'Brand: SUGANDHAK PERFUME\r\n\r\nScent Name: OCEAN BREEZE\r\n\r\nIdeal For: Men\r\n\r\nScent Profile: Aquatic, Fresh, and Aromatic\r\n\r\nUse: Daily Wear / Warm Weather\r\n\r\nBottle Color: Deep Ocean Blue ', 'Alcohol', '2025-10-09', 1);
+(54, '6', 'OCEAN BREEZE', 399, '2025-10-09_bodyspray6.png', 'An invigorating, marine, and fresh body spray. It captures the spirit of the open sea with notes of Sea Salt, Blue Cypress, and Ambergris for dynamic freshness.', '150ml', 'The SUGANDHAK OCEAN BREEZE Body Spray is an instant escape to the coast. It launches with a vibrant, salty splash from the Sea Salt and Grapefruit, giving you an immediate feeling of energy and cleanliness. The heart dives into the cool depth of the ocean with Aquatic Accord and a refreshing touch of Blue Cypress. Finally, the scent settles into a refined, long-lasting trail of Cedarwood and Ambergris, adding a sensual warmth that balances the extreme freshness. This spray is perfect for men who love powerful, fresh, and modern aquatic scents, making it ideal for daily wear or warmer weather.', 'Brand: SUGANDHAK PERFUME\r\n\r\nScent Name: OCEAN BREEZE\r\n\r\nIdeal For: Men\r\n\r\nScent Profile: Aquatic, Fresh, and Aromatic\r\n\r\nUse: Daily Wear / Warm Weather\r\n\r\nBottle Color: Deep Ocean Blue ', 'Alcohol', '2025-10-09', 1),
+(55, '7', 'Lavender Mist', 299, '2025-11-06_room_spray1.png', 'Unwind with a single spray. Transform your home into a peaceful sanctuary with the soothing, natural aroma of fresh-cut Lavender. This Lavender Mist instantly banishes odors and infuses your space with a long-lasting, calming fragrance, perfect for relaxation, better sleep, and creating a welcoming ambiance.', '250ml', 'Step into a field of blooming lavender without leaving your couch. The Sugandhak Perfume Lavender Mist is an exquisitely formulated air freshener designed to elevate your mood and environment.\r\n\r\nCalming Aroma: Features the classic, therapeutic scent of lavender, well-known for its stress-reducing and sleep-enhancing qualities.\r\n\r\nInstant Freshness: Rapidly neutralizes stale and unwanted odors, leaving behind a clean, crisp, and delightful floral fragrance that lasts.\r\n\r\nVersatile Use: Ideal for bedrooms, bathrooms, living rooms, offices, and even linens. Use it as a room spray, linen spray, or pillow mist to set a tranquil mood.', 'Long-Lasting Formula: Designed to provide a fresh scent that lingers for hours.\r\n\r\nEasy-to-Use: Simple spray mechanism for a fine, wide mist application.\r\n\r\nFragrance Profile: A classic, natural lavender scent with subtle, fresh floral undertones.', 'Spicy', '2025-11-06', 1),
+(56, '7', 'Ocean Fresh', 249, '2025-11-06_room_spray2.png', 'Experience the rush of the sea. Instantly invigorate your space with a crisp, clean burst of fresh ocean air. This Ocean Fresh scent is a revitalizing escape, leaving your home smelling like a beautiful coastal morning.', '250ml', 'Bring the refreshing, airy scent of the seaside right into your living room. The Sugandhak Perfume Ocean Fresh mist captures the essence of crashing waves and cool sea breeze, perfectly blending clean and aquatic notes.\r\n\r\nInvigorating Scent: Features a lively, clean, and cool aquatic fragrance that is instantly uplifting and refreshing.\r\n\r\nPowerful Odor Control: Rapidly eliminates tough odors in kitchens, bathrooms, and living areas, replacing them with a bright, lasting freshness.\r\n\r\nPerfect for Any Room: Ideal for spaces that need a quick, powerful refresh and a clean, neutral yet captivating aroma.', 'Fragrance Profile: Clean, Aquatic, and Airy with subtle marine notes.\r\n\r\nMood: Energizing, Crisp, and Refreshing.\r\n\r\nUsage: Can be used as a room spray, car freshener, or to quickly refresh towels and linens.', 'Stronge', '2025-11-06', 1),
+(57, '7', 'Sandalwood & Rose', 299, '2025-11-06_room_spray3.png', 'An Ancient, Luxurious Embrace. Infuse your space with the rich, warm depth of Sandalwood softened by the romantic, delicate bloom of Rose. This is a classic, captivating fragrance that creates a truly luxurious and timeless ambiance.', '250ml', 'Elevate your home with this exquisite blend that speaks of heritage and tranquility. The Sandalwood & Rose mist perfectly marries two of the most revered scents in perfumery.\r\n\r\nWarm & Woody Base: The rich, creamy essence of Sandalwood provides a grounding and lasting foundation.\r\n\r\nVelvety Floral Heart: The timeless fragrance of fresh Rose petals adds a sweet, romantic lift to the blend.\r\n\r\nMood: Elegant, calming, luxurious, and deeply comforting. Ideal for living rooms, bedrooms, or entrance ways where you want to make a sophisticated impression.', 'Fragrance Profile: Traditional, Floral-Woody, and Sweet.\r\n\r\nLong-Lasting: The depth of sandalwood ensures the aroma lingers and provides continuous freshness.\r\n\r\nUsage: A powerful spray to quickly neutralize odors while imbuing your room with a serene, exotic scent.', 'Sweet', '2025-11-06', 1),
+(58, '7', 'Green Tea & Mint', 349, '2025-11-06_room_spray4.png', 'Instant Spa Refreshment. Awaken your senses with the clean, crisp clarity of Green Tea perfectly blended with the cooling, bright burst of Mint. This invigorating mist is your daily dose of wellness and freshness, leaving your space feeling light, clean, and energized.', '250ml', 'Inspired by a tranquil spa experience, the Sugandhak Perfume Green Tea & Mint mist creates an atmosphere of revitalization and focused calm. This unique fragrance is designed to soothe the mind while providing a powerful, clean aroma.\r\n\r\nAromatic Clarity: The subtle, earthy notes of Green Tea promote a feeling of well-being and purification.\r\n\r\nCooling Uplift: The sharp, refreshing scent of Mint provides an immediate energy boost, clearing the air and the mind.\r\n\r\nPerfect for Focus: Ideal for home offices, yoga spaces, kitchens, or any area where you want a clean, non-cloying, and stimulating fragrance.', 'Fragrance Profile: Herbal, Fresh, Citrusy (Mint), and Clean.\r\n\r\nTherapeutic Feel: Known to aid in relaxation, mental clarity, and relieving stuffiness.\r\n\r\nUsage: A refreshing spritz to neutralize cooking odors or create a calming environment before a meeting or meditation.', 'Alcohol', '2025-11-06', 1),
+(59, '7', 'Wild Berry', 349, '2025-11-06_room_spray5.png', 'A Burst of Fruity Delight. Indulge your senses with the sweet, juicy, and vibrant aroma of freshly picked forest berries. This Wild Berry mist is a playful, cheerful, and captivating scent that instantly lifts the mood in any room.', '200ml', 'Bring the sweet, luscious scent of a berry patch indoors. The Sugandhak Perfume Wild Berry mist is a complex blend of rich, ripe raspberries, tangy blueberries, and deep blackberries, creating a fragrance that is both comforting and exciting.\r\n\r\nSweet & Cheerful: Features a dominant, natural fruity sweetness that is highly appealing and long-lasting.\r\n\r\nInviting Aroma: Instantly creates a warm, welcoming, and vibrant atmosphere in your home.\r\n\r\nOdor Masking: Excellent for quickly masking odors in common areas like the kitchen or living room with a delightful fruity fragrance.', 'Fragrance Profile: Fruity, Sweet, Juicy, and Vibrant.\r\n\r\nMood: Happy, Playful, and Welcoming.\r\n\r\nUsage: Perfect for creating a festive or casual ambiance.', 'Sweet', '2025-11-06', 1),
+(60, '7', 'Vanilla & Coconut', 349, '2025-11-06_room_spray7.png', 'Your Tropical Getaway in a Can. Escape to a sunny beach with the creamy, warm sweetness of Vanilla blended with the exotic, refreshing scent of Coconut. This mist is pure indulgence, creating an ambiance of warmth, comfort, and tropical relaxation.', '200ml', 'This fragrance is a decadent treat for your home. The Vanilla & Coconut mist combines two beloved, comforting notes to deliver a rich, warm, and inviting atmosphere that smells like a perpetual vacation.\r\n\r\nDecadent Comfort: The classic, rich, and comforting scent of vanilla is the perfect counterpoint to the light, airy sweetness of coconut.\r\n\r\nTropical Warmth: Reminiscent of a sunny day on a tropical beach, it evokes feelings of warmth and relaxation.\r\n\r\nIdeal for Cozy Spaces: Perfect for infusing bedrooms, living rooms, and dressing areas with a sweet, luxurious aroma.', 'Fragrance Profile: Sweet, Tropical, Creamy, and Warm.\r\n\r\nMood: Relaxing, Indulgent, and Comforting.\r\n\r\nUsage: A powerful spray to instantly transform any space into a cozy, fragrant sanctuary.', 'Woody', '2025-11-06', 1),
+(61, '7', 'Citrus & Verbena', 299, '2025-11-06_room_spray6.png', 'Sunlight in a Spray. Instantly brighten your mood and space with the zesty, clean burst of fresh Citrus and the delicate, lemony lift of Verbena. This vibrant mist is perfect for creating a cheerful, spotlessly clean, and energizing atmosphere.', '250ml', 'Invigorate your surroundings with this classic, uplifting blend. The Sugandhak Perfume Citrus & Verbena mist is a powerhouse of clean, joyful fragrance designed to eliminate lingering smells and replace them with pure, sunny freshness.\r\n\r\nZesty Cleanliness: Features sharp notes of lemon, lime, and orange, which are naturally deodorizing and highly stimulating.\r\n\r\nHerbal Sophistication: Verbena adds a subtle, refined herbal-citrus layer, making the scent crisp and sophisticated, not just sweet.\r\n\r\nMood: Highly energizing, mood-boosting, and clarifying. Perfect for spaces where you work or entertain.', 'Fragrance Profile: Bright, Zesty, Herbal-Citrus, and Clean.\r\n\r\nScent Intensity: Strong and immediate, perfect for quick refreshers.\r\n\r\nUsage: Ideal for kitchens, entryways, or anywhere a fresh, clean scent is desired.', 'Alcohol', '2025-11-06', 1);
 
 -- --------------------------------------------------------
 
@@ -255,6 +263,13 @@ CREATE TABLE `users` (
   `u_time` varchar(100) NOT NULL,
   `u_status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`u_id`, `u_fnm`, `u_email`, `u_mno`, `u_pwd`, `u_time`, `u_status`) VALUES
+(1, 'meet', 'meet@gmail.com', 2147483647, '123456', '2025-11-04', 1);
 
 -- --------------------------------------------------------
 
@@ -342,7 +357,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -372,19 +387,19 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `p_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `p_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `w_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `w_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

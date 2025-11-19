@@ -27,7 +27,6 @@
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label>First Name*</label>
               <input type="text" class="form-control" placeholder="First Name" name="fnm">
               <?php
                 if(isset($_SESSION['error']['fnm']))
@@ -38,7 +37,6 @@
             </div>
 
             <div class="form-group col-md-6">
-              <label>Last Name*</label>
               <input type="text" class="form-control" placeholder="Last Name" name="lnm">
               <?php
                 if(isset($_SESSION['error']['lnm']))
@@ -50,7 +48,6 @@
           </div>
 
           <div class="form-group">
-            <label>Country*</label>
             <select class="form-control" name="country">
               <option selected value="0">Select Country</option>
               <option>India</option>
@@ -66,7 +63,6 @@
           ?>
 
           <div class="form-group">
-            <label>Address*</label>
             <input type="text" class="form-control mb-2" placeholder="Street Address" name="address_line1">
             <?php
               if(isset($_SESSION['error']['address_line1']))
@@ -78,8 +74,7 @@
           </div>
 
           <div class="form-group">
-            <label>City*</label>
-            <input type="text" class="form-control" name="city">
+            <input type="text" class="form-control" name="city" placeholder="City">
           </div>
           <?php
             if(isset($_SESSION['error']['city']))
@@ -89,8 +84,7 @@
           ?>
 
           <div class="form-group">
-            <label>State*</label>
-            <input type="text" class="form-control" name="state">
+            <input type="text" class="form-control" name="state" placeholder="State">
           </div>
           <?php
             if(isset($_SESSION['error']['state']))
@@ -100,14 +94,12 @@
           ?>
 
           <div class="form-group">
-            <label>Pincode*</label>
-            <input type="text" class="form-control" name="pincode">
+            <input type="text" class="form-control" name="pincode" placeholder="Pincode">
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label>Phone*</label>
-              <input type="text" class="form-control" name="phone">
+              <input type="text" class="form-control" name="phone" placeholder="Phone Number">
               <?php
                 if(isset($_SESSION['error']['phone']))
                 {
@@ -117,8 +109,7 @@
             </div>
 
             <div class="form-group col-md-6">
-              <label>Email Address*</label>
-              <input type="email" class="form-control" name="email">
+              <input type="email" class="form-control" name="email" placeholder="Email Address">
               <?php
                 if(isset($_SESSION['error']['email']))
                 {

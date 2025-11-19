@@ -89,13 +89,12 @@
             $res = mysqli_query($link, $q);
 
             if(!$res){
-                // Debug purpose
                 die("MySQL Error: ".mysqli_error($link));
             }
 
-                      $order_id=mysqli_insert_id($link);
-                      unset($_SESSION['cart']);
-            ?>  
+              $order_id=mysqli_insert_id($link);
+              unset($_SESSION['cart']);
+?>  
 
  <!DOCTYPE html>
     <html lang="en">
